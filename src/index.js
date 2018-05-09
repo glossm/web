@@ -13,13 +13,24 @@ import 'semantic-ui-css/semantic.min.css';
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+
+import { verifyToken } from './actions/auth';
 import reducers from './reducers';
 import './index.css';
 
-axios.defaults.baseURL = 'http://api.glossm.com';
-
 const history = createBrowserHistory();
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
+axios.defaults.baseURL = 'http://api.glossm.com';
+axios.interceptors.response.use(
+  response => response,
+  (error) => {
+    if (error.response.status === 401) {
+      store.dispatch(verifyToken());
+    }
+    return Promise.reject(error);
+  },
+);
 
 /* eslint-disable react/jsx-filename-extension */
 const router = (

@@ -17,6 +17,18 @@ function setUser(user) {
   };
 }
 
+function verifyToken() {
+  return async function f(dispatch, getState) {
+    const { token } = getState().auth;
+    try {
+      await axios.post('accounts/token/verify/', { token });
+    } catch (error) {
+      dispatch(setToken(null));
+      dispatch(setUser(null));
+    }
+  };
+}
+
 function login(username, password) {
   return async function f(dispatch) {
     const response = await axios.post('accounts/login/', { username, password });
@@ -34,4 +46,4 @@ function logout() {
   };
 }
 
-export { setToken, login, logout };
+export { verifyToken, login, logout };
