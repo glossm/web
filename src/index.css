@@ -7,3 +7,7 @@ body {
 .page {
   margin-top: 100px;
 }
+
+.top-header {
+  margin-bottom: 2rem !important;
+}

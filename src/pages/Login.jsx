@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Form, Header } from 'semantic-ui-react';
+import { Container, Form, Header, Message } from 'semantic-ui-react';
 
 import { login } from '../actions/auth';
 
@@ -17,21 +17,26 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
+    error: false,
   };
 
   onChange = (e, { name, value }) => this.setState({ [name]: value });
-  onSubmit = () => {
+  onSubmit = async () => {
     const { onLogin } = this.props;
     const { username, password } = this.state;
-    onLogin(username, password);
+    try {
+      await onLogin(username, password);
+    } catch (error) {
+      this.setState({ error: true });
+    }
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, error } = this.state;
     return (
       <Container text className="page">
-        <Header size="large">Login</Header>
-        <Form onSubmit={this.onSubmit}>
+        <Header size="large" className="top-header">Login</Header>
+        <Form onSubmit={this.onSubmit} error={error}>
           <Form.Group widths="equal">
             <Form.Input
               name="username"
@@ -47,6 +52,11 @@ class Login extends Component {
               onChange={this.onChange}
             />
           </Form.Group>
+          <Message
+            error
+            header="Wrong username or password"
+            content="Please double-check your username and password."
+          />
           <Form.Button content="Submit" />
         </Form>
       </Container>
