@@ -41,5 +41,10 @@ const router = (
   </Provider>
 );
 
-ReactDOM.render(router, document.getElementById('root'));
-registerServiceWorker();
+async function start() {
+  await store.dispatch(verifyToken());
+  ReactDOM.render(router, document.getElementById('root'));
+  registerServiceWorker();
+}
+
+start();

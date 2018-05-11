@@ -18,10 +18,14 @@ function setUser(user) {
 }
 
 function verifyToken() {
-  return async function f(dispatch, getState) {
-    const { token } = getState().auth;
+  return async (dispatch) => {
+    const token = sessionStorage.getItem('token');
     try {
+      if (!token) throw new Error();
       await axios.post('accounts/token/verify/', { token });
+      dispatch(setToken(token));
+      const { data } = await axios.get('accounts/user/');
+      dispatch(setUser(data));
     } catch (error) {
       dispatch(setToken(null));
       dispatch(setUser(null));
@@ -30,7 +34,7 @@ function verifyToken() {
 }
 
 function login(username, password) {
-  return async function f(dispatch) {
+  return async (dispatch) => {
     const response = await axios.post('accounts/login/', { username, password });
     const { token, user } = response.data;
     dispatch(setToken(token));
@@ -39,7 +43,7 @@ function login(username, password) {
 }
 
 function logout() {
-  return async function f(dispatch) {
+  return async (dispatch) => {
     await axios.post('accounts/logout/');
     dispatch(setToken(null));
     dispatch(setUser(null));
