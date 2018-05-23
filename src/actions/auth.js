@@ -33,6 +33,20 @@ function verifyToken() {
   };
 }
 
+function signUp(username, email, password1, password2) {
+  return async (dispatch) => {
+    const response = await axios.post('accounts/registration/', {
+      username,
+      email,
+      password1,
+      password2,
+    });
+    const { token, user } = response.data;
+    dispatch(setToken(token));
+    dispatch(setUser(user));
+  };
+}
+
 function login(username, password) {
   return async (dispatch) => {
     const response = await axios.post('accounts/login/', { username, password });
@@ -50,4 +64,4 @@ function logout() {
   };
 }
 
-export { verifyToken, login, logout };
+export { verifyToken, signUp, login, logout };
