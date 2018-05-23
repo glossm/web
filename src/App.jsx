@@ -8,6 +8,7 @@ import { Container, Dropdown, Menu } from 'semantic-ui-react';
 import { logout } from './actions/auth';
 import Login from './pages/Login';
 import SelectLanguage from './pages/SelectLanguage';
+import SignUp from './pages/SignUp';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -60,13 +61,17 @@ function App(props) {
           <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
           {user ?
             personalMenu :
-            <Menu.Item position="right" name="login" as={Link} to="/login/" />
+            <Menu.Menu position="right">
+              <Menu.Item name="sign up" as={Link} to="/signup/" />
+              <Menu.Item name="login" as={Link} to="/login/" />
+            </Menu.Menu>
           }
         </Container>
       </Menu>
       <Switch>
         <Route exact path="/learn/" component={isAuthenticated(SelectLanguage)} />
         <Route exact path="/login/" component={isNotAuthenticated(Login)} />
+        <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
         <Redirect from="/" to="/" />
       </Switch>
     </div>

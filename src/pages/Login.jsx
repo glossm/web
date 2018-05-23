@@ -57,7 +57,7 @@ class Login extends Component {
             header="Wrong username or password"
             content="Please double-check your username and password."
           />
-          <Form.Button content="Submit" />
+          <Form.Button content="Login" />
         </Form>
       </Container>
     );
