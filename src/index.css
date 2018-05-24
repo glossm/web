@@ -5,9 +5,14 @@ body {
 }
 
 .page {
-  margin-top: 100px;
+  padding-top: 100px;
+  padding-bottom: 80px;
 }
 
 .top-header {
   margin-bottom: 2rem !important;
+}
+
+#nav-bar {
+  z-index: 10;
 }

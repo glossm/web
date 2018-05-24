@@ -7,6 +7,7 @@ import { Container, Dropdown, Menu } from 'semantic-ui-react';
 
 import { logout } from './actions/auth';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import SelectLanguage from './pages/SelectLanguage';
 import SignUp from './pages/SignUp';
 
@@ -37,7 +38,7 @@ function App(props) {
     wrapperDisplayName: 'IsAuthenticated',
   });
   const isNotAuthenticated = connectedRouterRedirect({
-    redirectPath: '/learn/',
+    redirectPath: '/profile/',
     allowRedirectBack: false,
     authenticatedSelector: state => state.auth.user === null,
     wrapperDisplayName: 'IsNotAuthenticated',
@@ -47,6 +48,7 @@ function App(props) {
     <Menu.Menu position="right">
       <Dropdown item text={user && user.username}>
         <Dropdown.Menu>
+          <Dropdown.Item text="My Profile" as={Link} to="/profile/" />
           <Dropdown.Item text="Logout" onClick={onLogout} />
         </Dropdown.Menu>
       </Dropdown>
@@ -68,12 +70,15 @@ function App(props) {
           }
         </Container>
       </Menu>
-      <Switch>
-        <Route exact path="/learn/" component={isAuthenticated(SelectLanguage)} />
-        <Route exact path="/login/" component={isNotAuthenticated(Login)} />
-        <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
-        <Redirect from="/" to="/" />
-      </Switch>
+      <div className="page">
+        <Switch>
+          <Route exact path="/login/" component={isNotAuthenticated(Login)} />
+          <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
+          <Route exact path="/profile/" component={isAuthenticated(Profile)} />
+          <Route exact path="/learn/" component={isAuthenticated(SelectLanguage)} />
+          <Redirect from="/" to="/profile/" />
+        </Switch>
+      </div>
     </div>
   );
 }

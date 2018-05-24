@@ -26,12 +26,7 @@ class SignUp extends Component {
   onChange = (e, { name, value }) => this.setState({ [name]: value });
   onSubmit = async () => {
     const { onSignUp } = this.props;
-    const {
-      username,
-      email,
-      password1,
-      password2,
-    } = this.state;
+    const { username, email, password1, password2 } = this.state;
     try {
       await onSignUp(username, email, password1, password2);
     } catch (error) {
@@ -40,16 +35,10 @@ class SignUp extends Component {
   }
 
   render() {
-    const {
-      username,
-      email,
-      password1,
-      password2,
-      error,
-    } = this.state;
+    const { username, email, password1, password2, error } = this.state;
     return (
-      <Container text className="page">
-        <Header size="large" className="top-header">Sign Up</Header>
+      <Container text>
+        <Header content="Sign Up" size="large" className="top-header" />
         <Form onSubmit={this.onSubmit} error={error}>
           <Form.Group widths="equal">
             <Form.Field>

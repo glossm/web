@@ -34,8 +34,8 @@ class Login extends Component {
   render() {
     const { username, password, error } = this.state;
     return (
-      <Container text className="page">
-        <Header size="large" className="top-header">Login</Header>
+      <Container text>
+        <Header content="Login" size="large" className="top-header" />
         <Form onSubmit={this.onSubmit} error={error}>
           <Form.Group widths="equal">
             <Form.Input
