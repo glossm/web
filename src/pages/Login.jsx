@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Form, Header, Message } from 'semantic-ui-react';
+import { Button, Form, Message, Modal } from 'semantic-ui-react';
 
 import { login } from '../actions/auth';
 
@@ -11,6 +11,7 @@ const mapDispatchToProps = dispatch => ({
 
 const propTypes = {
   onLogin: PropTypes.func.isRequired,
+  history: PropTypes.shape({ goBack: PropTypes.func }).isRequired,
 };
 
 class Login extends Component {
@@ -20,6 +21,7 @@ class Login extends Component {
     error: false,
   };
 
+  onClose = () => this.props.history.goBack();
   onChange = (e, { name, value }) => this.setState({ [name]: value });
   onSubmit = async () => {
     const { onLogin } = this.props;
@@ -29,15 +31,15 @@ class Login extends Component {
     } catch (error) {
       this.setState({ error: true });
     }
-  }
+  };
 
   render() {
     const { username, password, error } = this.state;
     return (
-      <Container text>
-        <Header content="Login" size="large" className="top-header" />
-        <Form onSubmit={this.onSubmit} error={error}>
-          <Form.Group widths="equal">
+      <Modal defaultOpen size="mini" onClose={this.onClose}>
+        <Modal.Header>Login</Modal.Header>
+        <Modal.Content>
+          <Form id="login-form" onSubmit={this.onSubmit} error={error}>
             <Form.Input
               name="username"
               placeholder="Username"
@@ -51,15 +53,22 @@ class Login extends Component {
               value={password}
               onChange={this.onChange}
             />
-          </Form.Group>
-          <Message
-            error
-            header="Wrong username or password"
-            content="Please double-check your username and password."
+            <Message
+              error
+              header="Wrong username or password"
+              content="Please double-check your username and password."
+            />
+          </Form>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button
+            type="submit"
+            form="login-form"
+            content="Login"
+            color="green"
           />
-          <Form.Button content="Login" />
-        </Form>
-      </Container>
+        </Modal.Actions>
+      </Modal>
     );
   }
 }
