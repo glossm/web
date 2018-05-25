@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -6,10 +7,12 @@ import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 import { Container, Dropdown, Menu } from 'semantic-ui-react';
 
 import { logout } from './actions/auth';
+import LanguageList from './pages/LanguageList';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import SelectLanguage from './pages/SelectLanguage';
+import Session from './pages/Session';
 import SignUp from './pages/SignUp';
+import TopicList from './pages/TopicList';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -32,26 +35,33 @@ const defaultProps = {
 function App(props) {
   const { user, onLogout, location } = props;
   const isActive = path => location.pathname.includes(path);
+
   const isAuthenticated = connectedRouterRedirect({
     redirectPath: '/login/',
-    authenticatedSelector: state => state.auth.user !== null,
+    authenticatedSelector: () => !_.isNil(sessionStorage.getItem('token')),
     wrapperDisplayName: 'IsAuthenticated',
   });
   const isNotAuthenticated = connectedRouterRedirect({
     redirectPath: '/profile/',
     allowRedirectBack: false,
-    authenticatedSelector: state => state.auth.user === null,
+    authenticatedSelector: () => _.isNil(sessionStorage.getItem('token')),
     wrapperDisplayName: 'IsNotAuthenticated',
   });
 
-  const personalMenu = (
+  const authenticatedMenu = () => (
     <Menu.Menu position="right">
-      <Dropdown item text={user && user.username}>
+      <Dropdown item text={user.username}>
         <Dropdown.Menu>
           <Dropdown.Item text="My Profile" as={Link} to="/profile/" />
           <Dropdown.Item text="Logout" onClick={onLogout} />
         </Dropdown.Menu>
       </Dropdown>
+    </Menu.Menu>
+  );
+  const notAuthenticatedMenu = () => (
+    <Menu.Menu position="right">
+      <Menu.Item name="sign up" as={Link} to="/signup/" />
+      <Menu.Item name="login" as={Link} to="/login/" />
     </Menu.Menu>
   );
 
@@ -61,13 +71,7 @@ function App(props) {
         <Container>
           <Menu.Item name="glossm" as={Link} to="/" header />
           <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
-          {user ?
-            personalMenu :
-            <Menu.Menu position="right">
-              <Menu.Item name="sign up" as={Link} to="/signup/" />
-              <Menu.Item name="login" as={Link} to="/login/" />
-            </Menu.Menu>
-          }
+          {sessionStorage.getItem('token') ? authenticatedMenu() : notAuthenticatedMenu()}
         </Container>
       </Menu>
       <div className="page">
@@ -75,8 +79,10 @@ function App(props) {
           <Route exact path="/login/" component={isNotAuthenticated(Login)} />
           <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
           <Route exact path="/profile/" component={isAuthenticated(Profile)} />
-          <Route exact path="/learn/" component={isAuthenticated(SelectLanguage)} />
-          <Redirect from="/" to="/profile/" />
+          <Route exact path="/learn/" component={isAuthenticated(LanguageList)} />
+          <Route exact path="/learn/:langId/" component={isAuthenticated(TopicList)} />
+          <Route exact path="/learn/:langId/:topicId/" component={isAuthenticated(Session)} />
+          <Redirect from="/" to="/" />
         </Switch>
       </div>
     </div>
