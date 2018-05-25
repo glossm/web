@@ -76,7 +76,7 @@ function App(props) {
           <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
           <Route exact path="/profile/" component={isAuthenticated(Profile)} />
           <Route exact path="/learn/" component={isAuthenticated(SelectLanguage)} />
-          <Redirect from="/" to="/profile/" />
+          <Redirect from="/" to="/" />
         </Switch>
       </div>
     </div>
