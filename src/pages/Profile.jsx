@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, Container, Grid, Label, Sticky } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
-import avatarImg from '../assets/images/avatar.png';
 import ProficiencyCard from '../components/ProficiencyCard';
+import StickyProfileCard from '../components/StickyProfileCard';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -17,7 +17,6 @@ const propTypes = {
 
 class Profile extends Component {
   state = {
-    sticked: false,
     proficiency: [],
   };
 
@@ -31,26 +30,27 @@ class Profile extends Component {
     this.setState({ proficiency });
   }
 
-  onStick = () => this.setState({ sticked: true });
-  onUnstick = () => this.setState({ sticked: false });
   handleContextRef = contextRef => this.setState({ contextRef });
 
   render() {
     const { user } = this.props;
-    const { sticked, proficiency, contextRef } = this.state;
+    const { proficiency, contextRef } = this.state;
+    const offset = 100;
+
     return (
       <Container>
         <Grid centered>
           <Grid.Column width={4}>
-            <Sticky context={contextRef} offset={100}>
-              <Card
-                style={{ marginTop: sticked ? 100 : 0 }}
-                image={user.profileThumbnail || avatarImg}
-                header={user.username}
-                description={user.name}
-                extra={user.isExpert && <Label content="Expert" color="green" />}
-              />
-            </Sticky>
+            <StickyProfileCard
+              context={contextRef}
+              offset={offset}
+              image={user.profileThumbnail}
+              username={user.username}
+              name={user.name}
+              tags={[
+                user.isExpert && { text: 'Expert', color: 'green' },
+              ]}
+            />
           </Grid.Column>
           <Grid.Column width={12}>
             <div ref={this.handleContextRef}>
