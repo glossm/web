@@ -2,11 +2,11 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
-import { Container, Dropdown, Menu } from 'semantic-ui-react';
 
 import { logout } from './actions/auth';
+import NavBar from './components/NavBar';
 import LanguageList from './pages/LanguageList';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -34,7 +34,6 @@ const defaultProps = {
 
 function App(props) {
   const { user, onLogout, location } = props;
-  const isActive = path => location.pathname.includes(path);
 
   const isAuthenticated = connectedRouterRedirect({
     redirectPath: '/login/',
@@ -48,32 +47,9 @@ function App(props) {
     wrapperDisplayName: 'IsNotAuthenticated',
   });
 
-  const authenticatedMenu = () => (
-    <Menu.Menu position="right">
-      <Dropdown item text={user.username}>
-        <Dropdown.Menu>
-          <Dropdown.Item text="My Profile" as={Link} to="/profile/" />
-          <Dropdown.Item text="Logout" onClick={onLogout} />
-        </Dropdown.Menu>
-      </Dropdown>
-    </Menu.Menu>
-  );
-  const notAuthenticatedMenu = () => (
-    <Menu.Menu position="right">
-      <Menu.Item name="sign up" as={Link} to="/signup/" />
-      <Menu.Item name="login" as={Link} to="/login/" />
-    </Menu.Menu>
-  );
-
   return (
     <div>
-      <Menu fixed="top" size="large" secondary pointing>
-        <Container>
-          <Menu.Item name="glossm" as={Link} to="/" header />
-          <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
-          {sessionStorage.getItem('token') ? authenticatedMenu() : notAuthenticatedMenu()}
-        </Container>
-      </Menu>
+      <NavBar user={user} onLogout={onLogout} pathname={location.pathname} />
       <div className="page">
         <Switch>
           <Route exact path="/login/" component={isNotAuthenticated(Login)} />
