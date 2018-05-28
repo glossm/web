@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Container, Header } from 'semantic-ui-react';
+import { Button, Card, Container, Header } from 'semantic-ui-react';
 import axios from 'axios';
 
 const propTypes = {
   match: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
 };
 
 class TopicList extends Component {
@@ -21,6 +22,8 @@ class TopicList extends Component {
     this.setState({ topics });
   }
 
+  onGoBack = () => this.props.history.push('/learn/');
+
   render() {
     const { match } = this.props;
     const { topics } = this.state;
@@ -31,7 +34,7 @@ class TopicList extends Component {
         <Card.Group stackable itemsPerRow={4}>
           {topics.map(topic => (
             <Card
-              key={`topic-${topic.id}`}
+              key={topic.id.toString()}
               as={Link}
               to={`/learn/${langId}/${topic.id}/`}
               header={topic.name}
@@ -39,6 +42,8 @@ class TopicList extends Component {
             />
           ))}
         </Card.Group>
+        <Header size="tiny" />
+        <Button content="Back to Languages" onClick={this.onGoBack} />
       </Container>
     );
   }
