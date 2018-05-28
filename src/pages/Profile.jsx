@@ -56,7 +56,7 @@ class Profile extends Component {
             <div ref={this.handleContextRef}>
               {proficiency.map(({ id, name, level, percent }) => (
                 <ProficiencyCard
-                  key={`proficiency-${id}`}
+                  key={id.toString()}
                   name={name}
                   level={level}
                   percent={percent}
