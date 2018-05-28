@@ -4,13 +4,13 @@ class Language {
     code,
     name,
     numSpeakers,
-    description,
+    learning,
   }) {
     this.id = id;
     this.code = code;
     this.name = name;
     this.numSpeakers = numSpeakers;
-    this.description = description;
+    this.learning = learning;
   }
 }
 
