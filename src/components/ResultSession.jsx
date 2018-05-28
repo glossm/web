@@ -25,7 +25,11 @@ function ResultSession(props) {
       {topAnswers.map(({ answer, ratio }) => (
         <Fragment>
           <p>{answer}</p>
-          <Progress progress percent={Math.round(ratio * 100)} />
+          <Progress
+            progress
+            percent={Math.round(ratio * 100)}
+            success={answer === submittedAnswer}
+          />
         </Fragment>
       ))}
       <Button content="Next" onClick={onNext} color="green" />
