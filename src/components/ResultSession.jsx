@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, Progress } from 'semantic-ui-react';
+import { Button, Header, Modal, Progress } from 'semantic-ui-react';
 
 const propTypes = {
   answer: PropTypes.string.isRequired,
@@ -15,25 +15,29 @@ const propTypes = {
 function ResultSession(props) {
   const { answer: submittedAnswer, score, topAnswers, onNext } = props;
   return (
-    <React.Fragment>
-      <Header content="Submission Result" />
-      <Header content="Your Answer" size="tiny" />
-      <p>{submittedAnswer}</p>
-      <Header content="Score" size="tiny" />
-      <p>{score} points</p>
-      <Header content="Top Answers" size="tiny" />
-      {topAnswers.map(({ answer, ratio }) => (
-        <Fragment>
-          <p>{answer}</p>
-          <Progress
-            progress
-            percent={Math.round(ratio * 100)}
-            success={answer === submittedAnswer}
-          />
-        </Fragment>
-      ))}
-      <Button content="Next" onClick={onNext} color="green" />
-    </React.Fragment>
+    <Modal defaultOpen size="small" onClose={onNext}>
+      <Modal.Header content="Submission Result" />
+      <Modal.Content>
+        <Header content="Your Answer" size="tiny" />
+        <p>{submittedAnswer}</p>
+        <Header content="Score" size="tiny" />
+        <p>{score} points</p>
+        <Header content="Top Answers" size="tiny" />
+        {topAnswers.map(({ answer, ratio }) => (
+          <Fragment>
+            <p>{answer}</p>
+            <Progress
+              progress
+              percent={Math.round(ratio * 100)}
+              success={answer === submittedAnswer}
+            />
+          </Fragment>
+        ))}
+      </Modal.Content>
+      <Modal.Actions>
+        <Button content="Next" onClick={onNext} color="green" />
+      </Modal.Actions>
+    </Modal>
   );
 }
 

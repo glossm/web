@@ -17,6 +17,10 @@ body {
   z-index: 10;
 }
 
+.ui.modal {
+  margin-top: 0 !important;
+}
+
 .ui.page.modals.transition.visible {
   display: flex !important;
 }
