@@ -3,10 +3,12 @@ class Language {
     id,
     name,
     level,
+    progress,
   }) {
     this.id = id;
     this.name = name;
     this.level = level;
+    this.progress = progress;
   }
 }
 

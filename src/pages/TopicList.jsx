@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, Card, Container, Header } from 'semantic-ui-react';
+import { Button, Card, Container, Header, Progress } from 'semantic-ui-react';
 import axios from 'axios';
 
 const propTypes = {
@@ -24,6 +24,30 @@ class TopicList extends Component {
 
   onGoBack = () => this.props.history.push('/learn/');
 
+  renderTopicCard = langId => (topic) => {
+    const { id: topicId, name, progress } = topic;
+    const { current, total } = progress;
+    const progressBar = (
+      <Progress
+        value={current}
+        total={total}
+        size="small"
+        style={{ marginBottom: 0 }}
+        success={current !== 0 && current === total}
+      />
+    );
+    return (
+      <Card
+        key={topicId.toString()}
+        as={Link}
+        to={`/learn/${langId}/${topicId}/`}
+        header={name}
+        description={`${current} / ${total} learned`}
+        extra={progressBar}
+      />
+    );
+  }
+
   render() {
     const { match } = this.props;
     const { topics } = this.state;
@@ -32,15 +56,7 @@ class TopicList extends Component {
       <Container>
         <Header content="Select a Topic" size="large" className="top-header" />
         <Card.Group stackable itemsPerRow={4}>
-          {topics.map(topic => (
-            <Card
-              key={topic.id.toString()}
-              as={Link}
-              to={`/learn/${langId}/${topic.id}/`}
-              header={topic.name}
-              meta={`Level ${topic.level}`}
-            />
-          ))}
+          {topics.map(this.renderTopicCard(langId))}
         </Card.Group>
         <Header size="tiny" />
         <Button content="Back to Languages" onClick={this.onGoBack} />
