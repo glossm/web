@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import Session from './pages/Session';
 import SignUp from './pages/SignUp';
 import TopicList from './pages/TopicList';
+import Welcome from './pages/Welcome';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -52,6 +53,7 @@ function App(props) {
       <NavBar user={user} onLogout={onLogout} pathname={location.pathname} />
       <div className="page">
         <Switch>
+          <Route exact path="/" component={Welcome} />
           <Route exact path="/login/" component={isNotAuthenticated(Login)} />
           <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
           <Route exact path="/profile/" component={isAuthenticated(Profile)} />

@@ -11,10 +11,10 @@ const propTypes = {
 function ProficiencyCard(props) {
   const { name, level, percent } = props;
   return (
-    <Segment>
+    <Segment padded>
       <Header size="medium">{name}</Header>
       <Header size="small">{`Level ${level}`}</Header>
-      <Progress percent={percent} progress />
+      <Progress percent={percent} progress style={{ marginBottom: 0 }} />
     </Segment>
   );
 }
