@@ -1,16 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header } from 'semantic-ui-react';
+import { Button, Form, Header, Table } from 'semantic-ui-react';
 import Sound from 'react-sound';
 
 const propTypes = {
   audio: PropTypes.string,
+  meaning: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
   audio: null,
 };
+
+const LANGUAGES = [
+  { code: 'en', name: 'English' },
+  { code: 'ko', name: 'Korean' },
+  { code: 'ru', name: 'Russian' },
+  { code: 'zh', name: 'Chinese' },
+  { code: 'mn', name: 'Mongolian' },
+];
 
 class AnswerSession extends Component {
   state = {
@@ -37,7 +46,7 @@ class AnswerSession extends Component {
   onFinishedPlaying = () => this.setState({ playing: false });
 
   render() {
-    const { audio } = this.props;
+    const { audio, meaning } = this.props;
     const { answer, playing, playingDisabled, loadFailed } = this.state;
     const { PLAYING, STOPPED } = Sound.status;
 
@@ -63,7 +72,18 @@ class AnswerSession extends Component {
           onClick={this.onPlay}
           disabled={playingDisabled}
         />
-        <Header size="tiny" />
+        <Table basic="very" style={{ marginTop: '2rem' }}>
+          <Table.Header>
+            <Table.Row>
+              {LANGUAGES.map(({ code, name }) => <Table.HeaderCell key={code} content={name} />)}
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row>
+              {LANGUAGES.map(({ code }) => <Table.Cell key={code} content={meaning[code]} />)}
+            </Table.Row>
+          </Table.Body>
+        </Table>
         <Form onSubmit={this.onSubmit}>
           <Form.Input
             name="answer"
