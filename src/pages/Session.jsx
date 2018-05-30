@@ -76,13 +76,14 @@ class Session extends Component {
     const { fetchingRecords } = this.props;
     const { sessionType, record, answer, score, topAnswers } = this.state;
 
-    const answerSession = () => (
+    const RenderedAnswerSession = () => (
       <AnswerSession
         audio={record.audio}
+        meaning={record.meaning}
         onSubmit={this.onSubmit}
       />
     );
-    const resultSession = () => (
+    const RenderedResultSession = () => (
       <ResultSession
         answer={answer}
         score={score}
@@ -90,7 +91,7 @@ class Session extends Component {
         onNext={this.onNext}
       />
     );
-    const completedSession = () => (
+    const RenderedCompletedSession = () => (
       <CompletedSession
         onGoBack={this.onGoBack}
       />
@@ -99,9 +100,9 @@ class Session extends Component {
     return (
       <Container text>
         <Loader active={fetchingRecords} />
-        {sessionType === ANSWER && record && answerSession()}
-        {sessionType === RESULT && resultSession()}
-        {sessionType === COMPLETED && completedSession()}
+        {sessionType === ANSWER && record && <RenderedAnswerSession />}
+        {sessionType === RESULT && <RenderedResultSession />}
+        {sessionType === COMPLETED && <RenderedCompletedSession />}
       </Container>
     );
   }
