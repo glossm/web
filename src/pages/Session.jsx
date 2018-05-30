@@ -1,39 +1,107 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Loader, Message } from 'semantic-ui-react';
+import { Container, Loader } from 'semantic-ui-react';
+import axios from 'axios';
 
-import { fetchRecords } from '../actions/transcription';
+import { fetchRecords, checkAsLearned } from '../actions/transcription';
+import AnswerSession from '../components/AnswerSession';
+import CompletedSession from '../components/CompletedSession';
+import ResultSession from '../components/ResultSession';
 import Record from '../models/Record';
 
 const mapStateToProps = state => ({
   records: state.transcription.records,
+  fetchingRecords: state.transcription.fetchingRecords,
 });
 
 const mapDispatchToProps = dispatch => ({
   onFetchRecords: (langId, topicId) => dispatch(fetchRecords(langId, topicId)),
+  onCheck: recordId => dispatch(checkAsLearned(recordId)),
 });
 
 const propTypes = {
   records: PropTypes.arrayOf(Record).isRequired,
   fetchingRecords: PropTypes.bool.isRequired,
   onFetchRecords: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired,
   match: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
 };
 
+const ANSWER = 'ANSWER';
+const RESULT = 'RESULT';
+const COMPLETED = 'COMPLETED';
+
 class Session extends Component {
-  componentWillMount() {
-    const { onFetchRecords, match } = this.props;
-    const { langId, topicId } = match.params;
-    onFetchRecords(langId, topicId);
+  state = {
+    sessionType: ANSWER,
+    record: null,
+    answer: null,
+    score: null,
+    topAnswers: [],
   }
 
+  async componentWillMount() {
+    const { onFetchRecords, match } = this.props;
+    const { langId, topicId } = match.params;
+    await onFetchRecords(langId, topicId);
+    this.onNext();
+  }
+
+  onSubmit = async (answer) => {
+    const { onCheck } = this.props;
+    const { record } = this.state;
+    const { data } = await axios.post('transcription/submit/', { record: record.id, answer });
+    const { score, topAnswers } = data;
+    onCheck(record.id);
+    this.setState({ sessionType: RESULT, answer, score, topAnswers });
+  };
+  onNext = () => {
+    const { records } = this.props;
+    const record = records.find(r => !r.learned);
+    if (record) {
+      this.setState({ sessionType: ANSWER, record });
+    } else {
+      this.setState({ sessionType: COMPLETED });
+    }
+  };
+  onGoBack = () => {
+    const { match, history } = this.props;
+    const { langId } = match.params;
+    history.push(`/learn/${langId}/`);
+  };
+
   render() {
-    const { records, fetchingRecords } = this.props;
+    const { fetchingRecords } = this.props;
+    const { sessionType, record, answer, score, topAnswers } = this.state;
+
+    const answerSession = () => (
+      <AnswerSession
+        audio={record.audio}
+        onSubmit={this.onSubmit}
+      />
+    );
+    const resultSession = () => (
+      <ResultSession
+        answer={answer}
+        score={score}
+        topAnswers={topAnswers}
+        onNext={this.onNext}
+      />
+    );
+    const completedSession = () => (
+      <CompletedSession
+        onGoBack={this.onGoBack}
+      />
+    );
+
     return (
       <Container text>
         <Loader active={fetchingRecords} />
-        {records.map(record => <Message header={`Record #${record.id}`} />)}
+        {sessionType === ANSWER && record && answerSession()}
+        {sessionType === RESULT && resultSession()}
+        {sessionType === COMPLETED && completedSession()}
       </Container>
     );
   }
