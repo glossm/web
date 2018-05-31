@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Table } from 'semantic-ui-react';
 import Sound from 'react-sound';
 
+/* global soundManager: false */
+soundManager.setup({ ignoreMobileRestrictions: true });
+
 const propTypes = {
   audio: PropTypes.string,
   meaning: PropTypes.shape({}).isRequired,
