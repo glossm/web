@@ -17,7 +17,7 @@ function NavBar(props) {
   const { user, onLogout, pathname } = props;
 
   const isActive = path => pathname.includes(path);
-  const authenticatedMenu = () => (
+  const AuthenticatedMenu = () => (
     <Menu.Menu position="right">
       <Dropdown item text={user.username}>
         <Dropdown.Menu>
@@ -27,7 +27,7 @@ function NavBar(props) {
       </Dropdown>
     </Menu.Menu>
   );
-  const notAuthenticatedMenu = () => (
+  const NotAuthenticatedMenu = () => (
     <Menu.Menu position="right">
       <Menu.Item name="sign up" as={Link} to="/signup/" />
       <Menu.Item name="login" as={Link} to="/login/" />
@@ -35,11 +35,11 @@ function NavBar(props) {
   );
 
   return (
-    <Menu fixed="top" size="large" secondary pointing>
+    <Menu fixed="top" size="large" secondary pointing style={{ backgroundColor: 'white' }}>
       <Container>
         <Menu.Item name="glossm" as={Link} to="/" header />
         <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
-        {user ? authenticatedMenu() : notAuthenticatedMenu()}
+        {user ? <AuthenticatedMenu /> : <NotAuthenticatedMenu />}
       </Container>
     </Menu>
   );
