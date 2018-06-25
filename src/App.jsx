@@ -14,6 +14,7 @@ import Session from './pages/Session';
 import SignUp from './pages/SignUp';
 import TopicList from './pages/TopicList';
 import Welcome from './pages/Welcome';
+import PhonemePage from './pages/PhonemePage';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -60,6 +61,7 @@ function App(props) {
           <Route exact path="/learn/" component={isAuthenticated(LanguageList)} />
           <Route exact path="/learn/:langId/" component={isAuthenticated(TopicList)} />
           <Route exact path="/learn/:langId/:topicId/" component={isAuthenticated(Session)} />
+          <Route exact path="/table/" component={isAuthenticated(PhonemePage)} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>
