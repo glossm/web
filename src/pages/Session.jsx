@@ -80,6 +80,7 @@ class Session extends Component {
       <AnswerSession
         audio={record.audio}
         meaning={record.meaning}
+        symbols={['a', 'ê', 'é', 'ï', 'ü']}
         onSubmit={this.onSubmit}
       />
     );

@@ -6,6 +6,7 @@ import Sound from 'react-sound';
 const propTypes = {
   audio: PropTypes.string,
   meaning: PropTypes.shape({}).isRequired,
+  symbols: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
@@ -44,9 +45,14 @@ class AnswerSession extends Component {
   };
   onPlay = () => this.setState({ playing: true });
   onFinishedPlaying = () => this.setState({ playing: false });
+  onClickSymbol = (e, { content }) => {
+    let { answer } = this.state;
+    answer += content;
+    this.setState({ answer });
+  };
 
   render() {
-    const { audio, meaning } = this.props;
+    const { audio, meaning, symbols } = this.props;
     const { answer, playing, playingDisabled, loadFailed } = this.state;
     const { PLAYING, STOPPED } = Sound.status;
 
@@ -91,8 +97,18 @@ class AnswerSession extends Component {
             value={answer}
             onChange={this.onChange}
           />
-          <Form.Button content="Submit" color="green" />
         </Form>
+        <div style={{ marginTop: '1rem' }}>
+          {symbols.map(symbol => (
+            <Button
+              compact
+              circular
+              size="large"
+              content={symbol}
+              onClick={this.onClickSymbol}
+            />
+          ))}
+        </div>
       </Fragment>
     );
   }
