@@ -16,6 +16,7 @@ class LanguageList extends Component {
   onStartLearning = async (langId) => {
     await axios.post('transcription/start-learning/', { language: langId });
     this.fetchLanguages();
+    
   }
 
   async fetchLanguages() {
@@ -39,7 +40,7 @@ class LanguageList extends Component {
       />
     );
     return learning ?
-      <Card {...commonProps} as={Link} to={`/learn/${id}/`} /> :
+      <Card {...commonProps} as={Link} to={`/about/${id}/`} /> :
       <Card {...commonProps} extra={startLearningButton()} />;
   };
 

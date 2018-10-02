@@ -65,6 +65,8 @@ function login(username, password) {
   };
 }
 
+
+
 function logout() {
   return async (dispatch) => {
     await axios.post('accounts/logout/');

@@ -1,0 +1,16 @@
+@media(min-width: 768px) {
+  .tables {
+    margin: 30px;
+  }
+  .column { 
+    display: inline-block;
+  }
+
+  #left {
+    width: 60%;
+  }
+  #right {
+    width: 35%;
+    float: right;
+  }
+}

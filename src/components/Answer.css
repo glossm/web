@@ -1,0 +1,35 @@
+@media(min-width: 768px) {
+  /* .tables {
+    margin: 30px;
+  }
+  .column { 
+    display: inline-block;
+  } */
+
+  #font{
+  float :left;
+  width :35%;
+  margin :1%;
+  
+  }
+  #phoneme{
+    width : 50%;
+    margin: 3%; 
+    float : left
+  }
+  #graphic{
+
+    float: right; 
+    width : 35%;
+    
+  }
+  #buttonsize{
+    float: left;
+    width :7%;
+    margin : 1%;
+  }
+  #right {
+    width: 35%;
+    float: right;
+  }
+}

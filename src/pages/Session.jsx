@@ -9,7 +9,6 @@ import AnswerSession from '../components/AnswerSession';
 import CompletedSession from '../components/CompletedSession';
 import ResultSession from '../components/ResultSession';
 import Record from '../models/Record';
-
 const mapStateToProps = state => ({
   records: state.transcription.records,
   fetchingRecords: state.transcription.fetchingRecords,
@@ -47,6 +46,8 @@ class Session extends Component {
     const { langId, topicId } = match.params;
     await onFetchRecords(langId, topicId);
     this.onNext();
+    
+  
   }
 
   onSubmit = async (answer) => {
@@ -54,6 +55,8 @@ class Session extends Component {
     const { record } = this.state;
     const { data } = await axios.post('transcription/submit/', { record: record.id, answer });
     const { score, topAnswers } = data;
+   
+    
     onCheck(record.id);
     this.setState({ sessionType: RESULT, answer, score, topAnswers });
   };
@@ -69,18 +72,22 @@ class Session extends Component {
   onGoBack = () => {
     const { match, history } = this.props;
     const { langId } = match.params;
-    history.push(`/learn/${langId}/`);
+    history.push(`/learn/l${langId}`);
   };
 
   render() {
     const { fetchingRecords } = this.props;
     const { sessionType, record, answer, score, topAnswers } = this.state;
-
+    // console.log("records a: ",this.state);
     const RenderedAnswerSession = () => (
+      
       <AnswerSession
+        
         audio={record.audio}
         meaning={record.meaning}
         onSubmit={this.onSubmit}
+        image = {record.video}
+
       />
     );
     const RenderedResultSession = () => (
@@ -96,11 +103,15 @@ class Session extends Component {
         onGoBack={this.onGoBack}
       />
     );
-
+    // const tableSession =()=>{
+      
+    // }
     return (
       <Container text>
         <Loader active={fetchingRecords} />
+        {/*보여지는것 */}
         {sessionType === ANSWER && record && <RenderedAnswerSession />}
+        {/*결과 */}
         {sessionType === RESULT && <RenderedResultSession />}
         {sessionType === COMPLETED && <RenderedCompletedSession />}
       </Container>

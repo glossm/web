@@ -28,6 +28,7 @@ function NavBar(props) {
     </Menu.Menu>
   );
   const NotAuthenticatedMenu = () => (
+    
     <Menu.Menu position="right">
       <Menu.Item name="sign up" as={Link} to="/signup/" />
       <Menu.Item name="login" as={Link} to="/login/" />
@@ -39,7 +40,7 @@ function NavBar(props) {
       <Container>
         <Menu.Item name="glossm" as={Link} to="/" header />
         <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
-        {user ? <AuthenticatedMenu /> : <NotAuthenticatedMenu />}
+        {user ?<AuthenticatedMenu /> : <NotAuthenticatedMenu />}
       </Container>
     </Menu>
   );
