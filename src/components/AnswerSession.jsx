@@ -5,7 +5,7 @@ import Sound from 'react-sound';
 import './Answer.css';
 import axios from 'axios';
 import { CHECK_AS_LEANRED } from '../actions/transcription';
-import SomeInput from './SomeInput'
+
 
 const propTypes = {
   audio: PropTypes.string,
