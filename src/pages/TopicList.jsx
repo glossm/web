@@ -20,13 +20,16 @@ class TopicList extends Component {
     const { langId } = match.params;
     const { data: topics } = await axios.get(`core/languages/${langId}/topics/`);
     this.setState({ topics });
+    
   }
 
   onGoBack = () => this.props.history.push('/learn/');
 
   renderTopicCard = langId => (topic) => {
+    
     const { id: topicId, name, progress } = topic;
     const { current, total } = progress;
+    
     const progressBar = (
       <Progress
         value={current}
@@ -44,6 +47,7 @@ class TopicList extends Component {
         header={name}
         description={`${current} / ${total} learned`}
         extra={progressBar}
+       
       />
     );
   }

@@ -39,6 +39,8 @@ class Session extends Component {
     answer: null,
     score: null,
     topAnswers: [],
+    LangId : null,
+    TopicId : null, 
   }
 
   async componentWillMount() {
@@ -46,7 +48,10 @@ class Session extends Component {
     const { langId, topicId } = match.params;
     await onFetchRecords(langId, topicId);
     this.onNext();
-    
+    this.setState({
+      LangId : match.params.langId,
+      TopicId : match.params.topicId
+    })
   
   }
 
@@ -73,12 +78,13 @@ class Session extends Component {
     const { match, history } = this.props;
     const { langId } = match.params;
     history.push(`/learn/l${langId}`);
+    
   };
 
   render() {
     const { fetchingRecords } = this.props;
-    const { sessionType, record, answer, score, topAnswers } = this.state;
-    // console.log("records a: ",this.state);
+    const { sessionType, record, answer, score, topAnswers ,LangId,TopicId} = this.state;
+    
     const RenderedAnswerSession = () => (
       
       <AnswerSession
@@ -87,7 +93,9 @@ class Session extends Component {
         meaning={record.meaning}
         onSubmit={this.onSubmit}
         image = {record.video}
-
+        record = {record}
+        LangId = {LangId}
+        TopicId = {TopicId}
       />
     );
     const RenderedResultSession = () => (

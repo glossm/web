@@ -1,32 +1,57 @@
 @media(min-width: 768px) {
-  /* .tables {
-    margin: 30px;
-  }
-  .column { 
-    display: inline-block;
-  } */
-
   #font{
   float :left;
-  width :35%;
+  width :50%;
   margin :1%;
+  height: 30%;
   
+  }
+  #meaning{
+    position: relative;
+    float: left;
+    margin : 1%;
+    text-align: center;
+  }
+  #seconds{
+    display:block;
+  }
+  #hei {
+    height : 5%;
+    margin : 4%;
+    position: inherit;
+  }
+  #ppaps{
+    
+    bottom: 0;
+    position: relative;
+    margin :auto;
+    width: 100%;
+    height : 10%; 
+    float: left;
   }
   #phoneme{
     width : 50%;
     margin: 3%; 
     float : left
   }
+  
   #graphic{
 
     float: right; 
     width : 35%;
-    
+
+  }
+  #text{
+   
+    margin: 1%;
+    float: left;
+   
   }
   #buttonsize{
-    float: left;
+   
     width :7%;
     margin : 1%;
+    text-align: center;
   }
   #right {
     width: 35%;
