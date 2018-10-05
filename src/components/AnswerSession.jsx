@@ -36,23 +36,23 @@ const LANGUAGES = [
 ];
 const IPA = [
   
-  {code : 'a', value1 : 'a', value2 : 'ɑ', value3 :'æ', value4 : 'ɐ', value5:'ɑ̃'},
-  {code : 'b', value1 : 'b', value2 : 'β', value3 :'ɓ', value4 : 'ʙ'},
-  {code : 'c', value1 : 'c', value2 : 'ɕ', value3 :'ç'},
+  {code : 'a', value1 : 'a', value2 : 'ɑ', value3 :'æ', value4 : 'ɐ', value5:'ɑ̃'}, 
+  {code : 'b', value1 : 'b', value2 : 'β', value3 :'ɓ', value4 : 'ʙ'},   
+  {code : 'c', value1 : 'c', value2 : 'ɕ', value3 :'ç'},      
   {code : 'd', value1 : 'd', value2 : 'ð', value3 :'d͡ʒ', value4 : 'ɖ', value5 : 'ɗ'},
   {code : 'e', value1 : 'e', value2 : 'ə', value3 :'ɚ', value4 : 'ɵ', value5 : 'ɘ'},
   {code : 'f', value1 : 'f', value2 : '͡', value3 :'͜', value4 : '‿'},
 
-  {code : 'g', value1 : 'g', value2 : 'ɠ', value3 :'ɢ', value4 : 'ʛ'},
-  {code : 'h', value1 : 'h', value2 : 'ɥ', value3 :'ɦ', value4 : 'ħ', value5 : 'ɧ', value6 : 'ʜ'},
+  {code : 'g', value1 : 'g', value2 : 'ɠ', value3 :'ɢ', value4 : 'ʛ'}, 
+  {code : 'h', value1 : 'h', value2 : 'ɥ', value3 :'ɦ', value4 : 'ħ', value5 : 'ɧ', value6 : 'ʜ'}, 
   {code : 'i', value1 : 'i', value2 : 'ɪ', value3 :'ɨ', value4 : 'ɪ̈'},
   {code : 'j', value1 : 'j', value2 : 'ɟ', value3 :'ʝ', value4 : 'ʄ'},
-  {code : 'k', value1 : 'k'},
-  {code : 'l', value1 : 'l', value2 : 'ɫ', value3 :'ɬ', value4 : 'ɭ', value5 : 'ɮ', value6 : 'ʟ'},
+  {code : 'k', value1 : 'k', value2 : 'k'},
+  {code : 'l', value1 : 'l', value2 : 'ɫ', value3 :'ɬ', value4 : 'ɭ', value5 : 'ɮ', value6 : 'ʟ'}, 
 
   {code : 'm', value1 : 'm', value2 : 'ɱ'},
-  {code : 'n', value1 : 'n', value2 : 'ŋ', value3 :'ɲ', value4 : 'ɴ', value5 : 'ɳ'},
-  {code : 'o', value1 : 'o', value2 : 'ɔ', value3 :'œ', value5 : 'ø', value5 : 'ɒ', value6 : 'ɔ̃', value7 : 'ɶ'},
+  {code : 'n', value1 : 'n', value2 : 'ŋ', value3 :'ɲ', value4 : 'ɴ', value5 : 'ɳ'}, 
+  {code : 'o', value1 : 'o', value2 : 'ɔ', value3 :'œ', value4 : 'ø', value5 : 'ɒ', value6 : 'ɔ̃', value7 : 'ɶ'},
   {code : 'p', value1 : 'p', value2 : 'ɸ'},
   {code : 'q', value1 : 'q', value2 : 'ˈ' , value3 : 'ˌ'},
   {code : 'r', value1 : 'r', value2 : 'ɾ', value3 :'ʁ', value4 : 'ɹ', value5 : 'ɻ', value6 : 'ʀ', value7 : 'ɽ', value8 : 'ɺ'},
@@ -65,9 +65,9 @@ const IPA = [
   {code : 'x', value1 : 'x', value2 : 'χ'},
 
   {code : 'y', value1 : 'y', value2 : 'ʎ', value3 :'ɣ', value4 : 'ʏ', value5 : 'ɤ'},
-  {code : 'z', value1 : 'z', value2 : 'ʒ', value3 :'ʐ', value4 : 'ʑ'},
-  {code : '2', value1 : '2', value2 : 'ʔ', value3 :'ʕ', value4 : 'ʢ', value5 : 'ʡ'},
-  {code : '3', value1 : '3', value2 : 'ɛ', value3 :'ɜ', value4 : 'ɝ', vlaue5 : 'ɛ̃', value6 : 'ɞ'},
+  {code : 'z', value1 : 'z', value2 : 'ʒ', value3 :'ʐ', value4 : 'ʑ'},                    //90
+  {code : '2', value1 : '2', value2 : 'ʔ', value3 :'ʕ', value4 : 'ʢ', value5 : 'ʡ'},      // 50 
+  {code : '3', value1 : '3', value2 : 'ɛ', value3 :'ɜ', value4 : 'ɝ', value5 : 'ɛ̃', value6 : 'ɞ'}, //51 
 ];
 class AnswerSession extends Component {
   constructor(props){ 
@@ -95,7 +95,8 @@ class AnswerSession extends Component {
       current : '',
       total : '',
       value : '',
-      count: '',
+      count: '1',
+      kcode : '',
       
     };
   }
@@ -137,7 +138,7 @@ class AnswerSession extends Component {
   onPlay = () => this.setState({ playing: true });
 
   onFinishedPlaying = () => this.setState({ playing: false });
-
+/// keyboard input's area 
   specialOnKeyPress = (e) => { 
     
     e.preventDefault();   
@@ -145,25 +146,995 @@ class AnswerSession extends Component {
     if(e.keyCode === 17) {
       this.setState({ ctrlPressed: true })
     }
+    
     if(this.state.ctrlPressed) {
       const lastInputChar = this.state.answer.charAt(this.state.answer.length)
       const charToPut = String.fromCharCode(e.keyCode)
-     
-      
-      const values = 'value' + this.state.count
-      if(e.keycode === '65' ){ 
-        const lowerBound1 = 0x0250
-        const upperBound1 = 0x02AF
-        const lowerBound2 = 'a'.charCodeAt(0)
-        const upperBound2 = 'z'.charCodeAt(0)
-        charToPut.toLowerCase()
+      this.setState({kcode: e.keyCode 
+      }) // 두개가 한꺼번에 있는 경우는??? 
+      if(e.keyCode === 65 ){ // a 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[0].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-2)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[0].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[0].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[0].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[0].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        } 
+        // const lowerBound1 = 0x0250
+        // const upperBound1 = 0x02AF
+        // const lowerBound2 = 'a'.charCodeAt(0)
+        // const upperBound2 = 'z'.charCodeAt(0)
+        // charToPut.toLowerCase() // 
+        // console.log("asd",charToPut.toLowerCase())
       }
-      
+      else if(e.keyCode === 66 ){ // b 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[1].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[1].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[1].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0 ){
+            this.charToPut = IPA[1].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 67 ){ // c 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%3 === 1){
+            this.charToPut = IPA[2].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 2){
+            this.charToPut = IPA[2].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 0){
+            this.charToPut = IPA[2].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 68 ){ // d 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[3].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[3].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[3].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[3].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[3].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        } 
+      }
+      else if(e.keyCode === 69 ){ // e 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[4].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[4].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[4].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[4].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[4].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        } 
+      }
+      else if(e.keyCode === 70 ){ // f 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[5].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[5].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[5].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0 ){
+            this.charToPut = IPA[5].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 71 ){ // g 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[6].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[6].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[6].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0 ){
+            this.charToPut = IPA[6].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 72 ){ // h 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%6 === 1){
+            this.charToPut = IPA[7].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 2){
+            this.charToPut = IPA[7].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 3){
+            this.charToPut = IPA[7].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 4){
+            this.charToPut = IPA[7].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 5 ){
+            this.charToPut = IPA[7].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 0 ){
+            this.charToPut = IPA[7].value6;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 73 ){ // i 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[8].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-2)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[8].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[8].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0 ){
+            this.charToPut = IPA[8].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 74 ){ // j 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[9].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[9].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[9].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0 ){
+            this.charToPut = IPA[9].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 75 ){ // k 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%2 === 1){
+            this.charToPut = IPA[10].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%2 === 0){
+            this.charToPut = IPA[10].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 76 ){ // l 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%6 === 1){
+            this.charToPut = IPA[11].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 2){
+            this.charToPut = IPA[11].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 3){
+            this.charToPut = IPA[11].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 4){
+            this.charToPut = IPA[11].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 5 ){
+            this.charToPut = IPA[11].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 0 ){
+            this.charToPut = IPA[11].value6;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }  
+      else if(e.keyCode === 77 ){ // m 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%2 === 1){
+            this.charToPut = IPA[12].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%2 === 0){
+            this.charToPut = IPA[12].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 78 ){ // n 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[13].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[13].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[13].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[13].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[13].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        } 
+      }
+      else if(e.keyCode === 79 ){ // o 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%7 === 1){
+            this.charToPut = IPA[14].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%7 === 2){
+            this.charToPut = IPA[14].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%7 === 3){
+            this.charToPut = IPA[14].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%7 === 4){
+            this.charToPut = IPA[14].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%7 === 5){
+            this.charToPut = IPA[14].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%7 === 6){
+            this.charToPut = IPA[14].value6;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }else if(this.state.count%7 === 0){
+            this.charToPut = IPA[14].value7;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-2)  +this.charToPut
+            })
+          }
+        } 
+      }
+      else if(e.keyCode === 80 ){ // p 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%2 === 1){
+            this.charToPut = IPA[15].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%2 === 0){
+            this.charToPut = IPA[15].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 81 ){ // q 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%3 === 1){
+            this.charToPut = IPA[16].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 2){
+            this.charToPut = IPA[16].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 0){
+            this.charToPut = IPA[16].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 82 ){ // r 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%8 === 1){
+            this.charToPut = IPA[17].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 2){
+            this.charToPut = IPA[17].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 3){
+            this.charToPut = IPA[17].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 4){
+            this.charToPut = IPA[17].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 5){
+            this.charToPut = IPA[17].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 6){
+            this.charToPut = IPA[17].value6;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 7){
+            this.charToPut = IPA[17].value7;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-2)  +this.charToPut
+            })
+          }
+          else if(this.state.count%8 === 0){
+            this.charToPut = IPA[17].value8;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-2)  +this.charToPut
+            })
+          }
+        } 
+      } 
+      else if(e.keyCode === 83 ){ // s 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%3 === 1){
+            this.charToPut = IPA[18].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 2){
+            this.charToPut = IPA[18].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 0){
+            this.charToPut = IPA[18].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 84 ){ // t 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[19].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[19].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[19].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[19].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[19].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+            
+          }
+        } 
+      }
+      else if(e.keyCode === 85 ){ // u 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%3 === 1){
+            this.charToPut = IPA[20].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 2){
+            this.charToPut = IPA[20].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%3 === 0){
+            this.charToPut = IPA[20].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      } // 
+      else if(e.keyCode === 86 ){ // v 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[21].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[21].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[21].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0){
+            this.charToPut = IPA[21].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 87 ){ // w 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[22].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[22].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[22].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0){
+            this.charToPut = IPA[22].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 88 ){ // x 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%2 === 1){
+            this.charToPut = IPA[23].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%2 === 0){
+            this.charToPut = IPA[23].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      }
+      else if(e.keyCode === 89 ){ // y 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[24].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[24].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[24].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[24].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[24].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+            
+          }
+        } 
+      }
+      else if(e.keyCode === 90 ){ // w 
+        
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%4 === 1){
+            this.charToPut = IPA[25].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 2){
+            this.charToPut = IPA[25].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 3){
+            this.charToPut = IPA[25].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%4 === 0){
+            this.charToPut = IPA[25].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+        }
+      } // 50 51 
+      else if(e.keyCode === 50 ){ // 2 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%5 === 1){
+            this.charToPut = IPA[26].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 2){
+            this.charToPut = IPA[26].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 3){
+            this.charToPut = IPA[26].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 ===4 ){
+            this.charToPut = IPA[26].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%5 === 0){
+            this.charToPut = IPA[26].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+            
+          }
+        } 
+      }
+      else if(e.keyCode === 51 ){ // 3 
+        if(this.state.kcode === e.keyCode){
+          this.setState({
+            kcode: e.keyCode, 
+            count : (this.state.count*1)+1
+          })
+          if(this.state.count%6 === 1){
+            this.charToPut = IPA[27].value1;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 2){
+            this.charToPut = IPA[27].value2;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 3){
+            this.charToPut = IPA[27].value3;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-1)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 ===4 ){
+            this.charToPut = IPA[27].value4;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 5){
+            this.charToPut = IPA[27].value5;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+          else if(this.state.count%6 === 0){
+            this.charToPut = IPA[27].value6;
+            this.setState({
+              answer : this.state.answer.substring(0,this.state.answer.length-3)  +this.charToPut
+            })
+          }
+        } 
+      }
+      else{
+        this.charToPut = String.fromCharCode(e.keyCode);
+        this.setState({
+          kcode: e.keyCode, 
+          count : 1,
+          answer : this.state.answer + this.charToPut
+        })
+      }
     }
     else {
       const charToPut = String.fromCharCode(e.keyCode)
         this.setState({
-          answer: this.state.answer + charToPut
+          answer: this.state.answer + charToPut.toLowerCase()
           
         })
     }
@@ -179,11 +1150,13 @@ class AnswerSession extends Component {
     }
     if(e.keyCode === 17) {
       
-      this.setState({ ctrlPressed: false })
+      this.setState({ ctrlPressed: false,
+      
+      })
     }
   }
 
-  
+  // open image and  Table when Click the text 
   openText = (e)=> {
     const wdata= e.target.textContent
     if(wdata==='음소목록 (누를시 열기/닫기)'&&this.state.opclStylephoneme ==='none'){
@@ -242,7 +1215,7 @@ class AnswerSession extends Component {
     if (loadFailed) playButtonText = 'Invalid audio source';
     return (
       <Fragment>
-        <SomeInput currentValue={this.state.langs} onChange={this.handleChange.bind(this)} />
+       
         <Header content="What does this sound like?" />
         {audio && (
           <Sound
