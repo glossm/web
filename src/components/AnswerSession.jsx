@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header, Table,Image,Progress} from 'semantic-ui-react';
+import { Button, Form, Header, Table,Image,Progress,Message} from 'semantic-ui-react';
 import Sound from 'react-sound';
 import './Answer.css';
 import axios from 'axios';
@@ -97,7 +97,8 @@ class AnswerSession extends Component {
       value : '',
       count: '1',
       kcode : '',
-      
+      error : true,
+      errormessage : 'block',
     };
   }
 
@@ -142,7 +143,7 @@ class AnswerSession extends Component {
   specialOnKeyPress = (e) => { 
     
     e.preventDefault();   
-    
+    const errorcheckstr = String.fromCharCode(e.keyCode).toLowerCase().charCodeAt(0);
     if(e.keyCode === 17) {
       this.setState({ ctrlPressed: true })
     }
@@ -189,12 +190,6 @@ class AnswerSession extends Component {
             })
           }
         } 
-        // const lowerBound1 = 0x0250
-        // const upperBound1 = 0x02AF
-        // const lowerBound2 = 'a'.charCodeAt(0)
-        // const upperBound2 = 'z'.charCodeAt(0)
-        // charToPut.toLowerCase() // 
-        // console.log("asd",charToPut.toLowerCase())
       }
       else if(e.keyCode === 66 ){ // b 
         
@@ -1132,11 +1127,31 @@ class AnswerSession extends Component {
       }
     }
     else {
-      const charToPut = String.fromCharCode(e.keyCode)
-        this.setState({
-          answer: this.state.answer + charToPut.toLowerCase()
-          
-        })
+      const charToPut = String.fromCharCode(e.keyCode).toLowerCase()
+      this.setState({
+        answer: this.state.answer + charToPut.toLowerCase()
+      })
+    }
+    // unicode block 
+    const kcodecheck = String.fromCharCode(e.keyCode).toLowerCase().charCodeAt(0);
+    if((errorcheckstr>=48&&errorcheckstr<58)||(errorcheckstr>=97&&errorcheckstr<123)||(errorcheckstr>=592&&errorcheckstr<688)){
+      
+      this.setState({
+        error : false,
+        errormessage :'none',
+      })
+    }
+    else if ((kcodecheck>=48&&kcodecheck<58)||(kcodecheck>=97&&kcodecheck<123)||(kcodecheck>=592&&kcodecheck<688)){
+      this.setState({
+        error : false,
+        errormessage :'none',
+      })
+    }
+    else {
+      this.setState({
+        error : true,
+        errormessage : 'block',
+      })
     }
   }
   specialOnKeyUp = (e) => {
@@ -1154,6 +1169,7 @@ class AnswerSession extends Component {
       
       })
     }
+    
   }
 
   // open image and  Table when Click the text 
@@ -1199,7 +1215,9 @@ class AnswerSession extends Component {
     
     const gopcldisplay = {
       'display' : this.state.opclStylewave
-     
+    }
+    const ermesdisplay ={
+      'display' : this.state.errormessage
     }
     const tableData = this.state.listPhoneme.map((item, index) => {
       return (
@@ -1259,10 +1277,15 @@ class AnswerSession extends Component {
             onChange={this.onChange}
             onKeyDown={this.specialOnKeyPress}
             onKeyUp={this.specialOnKeyUp}
-            
+            error = {this.state.error}
           />
-          
-          <Form.Button content="Submit" color="green" />
+          <Message
+            style = {ermesdisplay}
+            error
+            header='Invalid Input  '
+            content='Delete this letter and Enter the correct letter'
+          />
+          <Form.Button content="Submit" color="green" disabled ={this.state.error} />
         </Form>
         
         <div id ="seconds">

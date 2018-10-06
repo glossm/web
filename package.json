@@ -7,6 +7,7 @@
     "history": "^4.7.2",
     "human-format": "^0.10.0",
     "lodash": "^4.17.10",
+    "package.json": "^2.0.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
