@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { div, Header,Table} from 'semantic-ui-react';
 import axios from 'axios';
@@ -15,7 +15,7 @@ class AboutLanguage extends Component {
     this.onGoBack = this.onGoBack.bind(this)
     this.startLearning = this.startLearning.bind(this)
   }
-
+  
   async componentWillMount() {
     const { match } = this.props;
     const { langId } = match.params;
@@ -27,7 +27,7 @@ class AboutLanguage extends Component {
    * 
    * @param {React.MouseEvent<HTMLButtonElement>} e 
    */
-  onGoBack(e) {
+  onGoBack(e) {   
     e.preventDefault()
     this.props.history.push('/learn/')
   }
@@ -45,10 +45,6 @@ class AboutLanguage extends Component {
   }
 
   render() {
-    const { match } = this.props;
-    // const { topics } = this.state;
-    const { langId } = match.params;
-   
     const tableData = this.state.topics.map((item, index) => {
       
       return (
@@ -56,7 +52,7 @@ class AboutLanguage extends Component {
           <Table.Cell>{item.id}</Table.Cell>
           <Table.Cell>{item.name}</Table.Cell>
           <Table.Cell>{item.level}</Table.Cell>
-          <Table.Cell><Link to={`/learn/${langId}/${item.id}`}>Start Learning</Link></Table.Cell>
+          <Table.Cell></Table.Cell>
         </Table.Row>
       )
     }

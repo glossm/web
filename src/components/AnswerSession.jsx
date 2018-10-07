@@ -4,7 +4,7 @@ import { Button, Form, Header, Table,Image,Progress,Message} from 'semantic-ui-r
 import Sound from 'react-sound';
 import './Answer.css';
 import axios from 'axios';
-import { CHECK_AS_LEANRED } from '../actions/transcription';
+
 
 
 const propTypes = {
@@ -24,16 +24,19 @@ const defaultProps = {
   records : null,
   image :null,
   TopicId : null,
-  LangId : null,
+  LangId : '73',
 };
-
-const LANGUAGES = [
-  { code: 'en', name: 'English' },
-  { code: 'ko', name: 'Korean' },
-  { code: 'ru', name: 'Russian' },
-  { code: 'zh', name: 'Chinese' },
-  { code: 'mn', name: 'Mongolian' },
-];
+const TestText = [ {code  : '' , co1: 'Labial',	co2:'Alveolar',	co3:'Retroflex',	co4:'Palatal',
+  co5: 'Velar' ,co6: 'Uvular',	co7 :'Glottal'},
+  {code : 'Nasal', co1: 'm'	,co2 : 'n',co5 : 'ŋ'},
+  {code : 'Plosive', co1: 'p b'	,co2 : 't d',co5 : 'k ɡ', co6:'q'},
+  {code : 'Sibilant Fricative', co2: 's z'	,co3 : 'ʂ ʐ',co4 : 'ɕ'},
+  {code : 'Non-sibilant Fricative', co1: 'f v'	,co2 : 'θ ð',co6 : 'χ ʁ',co7:'h'},
+  {code : 'Trill', co2: 'r'},
+  {code : 'Approximant', co2: 'l'	,co4 : 'j',co5 : 'w'},
+  
+  {}
+]
 const IPA = [
   
   {code : 'a', value1 : 'a', value2 : 'ɑ', value3 :'æ', value4 : 'ɐ', value5:'ɑ̃'}, 
@@ -104,22 +107,17 @@ class AnswerSession extends Component {
 
   componentWillMount = async () => {
     // axios : 
-    // languages/<int:lang_id>/topics/<int:topic_id>/records/ 
     // 음소목록에 대한 api call 을 통한 데이터 집어 넣기 
     const { data: records } = await axios.get(`core/languages/`);
+    const progress  = await axios.get(`core/languages/${this.props.LangId}/topics/`);
     this.setState({
       listPhoneme : records,
       TopicId : this.props.TopicId,
       LangId : this.props.LangId,
-    
-    })
-    
-    const progress  = await axios.get(`core/languages/${this.props.LangId}/topics/`);
-    this.setState({
       current : progress.data[72-this.props.TopicId].progress.current,
       total : progress.data[72-this.props.TopicId].progress.total
     })
-        
+    console.log(records)
   }
   
   onChange = (e, { name, value }) => this.setState({ [name]: value });
@@ -149,8 +147,7 @@ class AnswerSession extends Component {
     }
     
     if(this.state.ctrlPressed) {
-      const lastInputChar = this.state.answer.charAt(this.state.answer.length)
-      const charToPut = String.fromCharCode(e.keyCode)
+      
       this.setState({kcode: e.keyCode 
       }) // 두개가 한꺼번에 있는 경우는??? 
       if(e.keyCode === 65 ){ // a 
@@ -1155,21 +1152,16 @@ class AnswerSession extends Component {
     }
   }
   specialOnKeyUp = (e) => {
-    
     e.preventDefault();
     if(e.keyCode === 8 ){
-      
       this.setState({
         answer : this.state.answer.substring(0,this.state.answer.length-2)
       })
     }
     if(e.keyCode === 17) {
-      
       this.setState({ ctrlPressed: false,
-      
       })
     }
-    
   }
 
   // open image and  Table when Click the text 
@@ -1204,27 +1196,32 @@ class AnswerSession extends Component {
   }
 
   render() {
-    const { audio, records,image,LangId,TopicId} = this.props;
-    
-    const { answer, playing, playingDisabled, loadFailed} = this.state;
+    const { audio,image} = this.props;
+    const { playing, playingDisabled, loadFailed} = this.state;
     const { PLAYING, STOPPED } = Sound.status;
-    
     const popcldisplay = {
       'display' : this.state.opclStylephoneme
     }
-    
     const gopcldisplay = {
       'display' : this.state.opclStylewave
     }
     const ermesdisplay ={
       'display' : this.state.errormessage
     }
-    const tableData = this.state.listPhoneme.map((item, index) => {
+    
+    const tableData = TestText.map((item, index) => {
+      console.log(TestText)
+    // const tableData = this.state.listPhoneme.map((item, index) => {  
       return (
-        <Table.Row key={index}>
-          <Table.Cell>{item.id}</Table.Cell>
-          <Table.Cell>{item.name}</Table.Cell>
-          <Table.Cell>{item.level}</Table.Cell>
+        <Table.Row key={index} >
+          <Table.Cell>{item.code} </Table.Cell>
+          <Table.Cell>{item.co1}</Table.Cell>
+          <Table.Cell>{item.co2}</Table.Cell>
+          <Table.Cell>{item.co3}</Table.Cell>
+          <Table.Cell>{item.co4}</Table.Cell>
+          <Table.Cell>{item.co5}</Table.Cell>
+          <Table.Cell>{item.co6}</Table.Cell>
+          <Table.Cell>{item.co7}</Table.Cell>
         </Table.Row>
       )
     })
@@ -1233,7 +1230,6 @@ class AnswerSession extends Component {
     if (loadFailed) playButtonText = 'Invalid audio source';
     return (
       <Fragment>
-       
         <Header content="What does this sound like?" />
         {audio && (
           <Sound
@@ -1254,12 +1250,10 @@ class AnswerSession extends Component {
         </div>
         <div id = "meaning" >뜻</div>
         <Form id = "font">
-          
           <Form.Input 
             readOnly
             value={this.state.langs}
           />
-          
         </Form>
         <div id ="text">
           <Button content="ko" id="buttonsize" onClick={this.onTextChange} />
@@ -1268,7 +1262,6 @@ class AnswerSession extends Component {
           <Button content="zn" id="buttonsize" onClick={this.onTextChange} />
           <Button content="mn" id="buttonsize" onClick={this.onTextChange} />
           </div>
-      
         <Form onSubmit={this.onSubmit} id ="hei"  >
           <Form.Input
             name="answer"
@@ -1287,33 +1280,27 @@ class AnswerSession extends Component {
           />
           <Form.Button content="Submit" color="green" disabled ={this.state.error} />
         </Form>
-        
         <div id ="seconds">
           <div id = "phoneme">
             <div onClick = {this.openText} >
               음소목록 (누를시 열기/닫기)
-
             </div>
-            <Table celled className="phonemeTable" style = {popcldisplay}>
-
+            <Table celled className="phonemeTable" style = {popcldisplay} id = "tablesize">
               <Table.Body>
               {tableData}
               </Table.Body>
               <Table.Footer>
                 <Table.Row>
-                  <Table.HeaderCell colSpan='3'>
+                  <Table.HeaderCell colSpan='6'>
                   </Table.HeaderCell>
                 </Table.Row>
               </Table.Footer>
             </Table>
           </div>
-          
           <div id = "graphic" onClick ={this.openText}>
-          
            파형 그래프 (누를시 열기/닫기)
           <Image src={image} style={gopcldisplay}/>
           </div>
-          
         </div>
         <div id = "ppaps">
           학습 상황 
@@ -1325,14 +1312,9 @@ class AnswerSession extends Component {
           />
         </div>
       </Fragment>
-      
     );
   }
 }
-
-
-
-
 AnswerSession.propTypes = propTypes;
 AnswerSession.defaultProps = defaultProps;
 
