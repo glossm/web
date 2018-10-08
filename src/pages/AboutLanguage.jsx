@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { div, Header,Table} from 'semantic-ui-react';
 import axios from 'axios';
-import './TopicList.css'
+import './AboutLanguage.css'
 
 
 const TestText = [ {code  : '' , co1: 'Labial',	co2:'Alveolar',	co3:'Retroflex',	co4:'Palatal',
