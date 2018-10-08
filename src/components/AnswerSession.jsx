@@ -35,7 +35,7 @@ const TestText = [ {code  : '' , co1: 'Labial',	co2:'Alveolar',	co3:'Retroflex',
   {code : 'Trill', co2: 'r'},
   {code : 'Approximant', co2: 'l'	,co4 : 'j',co5 : 'w'},
   
-  {}
+  
 ]
 const IPA = [
   
@@ -117,7 +117,6 @@ class AnswerSession extends Component {
       current : progress.data[72-this.props.TopicId].progress.current,
       total : progress.data[72-this.props.TopicId].progress.total
     })
-    console.log(records)
   }
   
   onChange = (e, { name, value }) => this.setState({ [name]: value });
@@ -1194,7 +1193,7 @@ class AnswerSession extends Component {
       })
     }
   }
-
+  
   render() {
     const { audio,image} = this.props;
     const { playing, playingDisabled, loadFailed} = this.state;
@@ -1210,11 +1209,10 @@ class AnswerSession extends Component {
     }
     
     const tableData = TestText.map((item, index) => {
-      console.log(TestText)
-    // const tableData = this.state.listPhoneme.map((item, index) => {  
+    // // const tableData = this.state.listPhoneme.map((item, index) => {  
       return (
         <Table.Row key={index} >
-          <Table.Cell>{item.code} </Table.Cell>
+          <Table.Cell>{item.code}</Table.Cell>
           <Table.Cell>{item.co1}</Table.Cell>
           <Table.Cell>{item.co2}</Table.Cell>
           <Table.Cell>{item.co3}</Table.Cell>

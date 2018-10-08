@@ -7,10 +7,11 @@
   }
 
   #left {
-    width: 60%;
+    width: 50%;
   }
   #right {
-    width: 35%;
+    width: 25%;
+    margin-right: 10%;
     float: right;
   }
 }
