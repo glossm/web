@@ -21,7 +21,7 @@ import './index.css';
 const history = createBrowserHistory();
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
-axios.defaults.baseURL = 'http://api.glossm.com';
+axios.defaults.baseURL = 'http://13.124.172.50:8000';
 axios.interceptors.response.use(
   response => response,
   (error) => {
