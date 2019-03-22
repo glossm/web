@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Table } from 'semantic-ui-react';
 import Sound from 'react-sound';
 import IPAInput from './IPAInput';
+import WaveformCanvas from './WaveformCanvas';
 
 const propTypes = {
   audio: PropTypes.string,
+  waveform: PropTypes.string,
   meaning: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
   audio: null,
+  waveform: null,
 };
 
 const LANGUAGES = [
@@ -47,7 +50,7 @@ class AnswerSession extends Component {
   onFinishedPlaying = () => this.setState({ playing: false });
 
   render() {
-    const { audio, meaning } = this.props;
+    const { audio, meaning, waveform } = this.props;
     const { answer, playing, playingDisabled, loadFailed } = this.state;
     const { PLAYING, STOPPED } = Sound.status;
 
@@ -73,6 +76,7 @@ class AnswerSession extends Component {
           onClick={this.onPlay}
           disabled={playingDisabled}
         />
+        <WaveformCanvas waveform={waveform} width={300} height={70}/>
         <Table basic="very" style={{ marginTop: '2rem' }}>
           <Table.Header>
             <Table.Row>

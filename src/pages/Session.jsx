@@ -81,6 +81,7 @@ class Session extends Component {
         audio={record.audio}
         meaning={record.meaning}
         onSubmit={this.onSubmit}
+        waveform={record.video}
       />
     );
     const RenderedResultSession = () => (
