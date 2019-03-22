@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Header, Table } from 'semantic-ui-react';
 import Sound from 'react-sound';
+import IPAInput from './IPAInput';
 
 const propTypes = {
   audio: PropTypes.string,
@@ -85,12 +86,7 @@ class AnswerSession extends Component {
           </Table.Body>
         </Table>
         <Form onSubmit={this.onSubmit}>
-          <Form.Input
-            name="answer"
-            placeholder="Your Answer"
-            value={answer}
-            onChange={this.onChange}
-          />
+          <IPAInput name="answer" value={answer} onChange={this.onChange}/><br/>
           <Form.Button content="Submit" color="green" />
         </Form>
       </Fragment>
