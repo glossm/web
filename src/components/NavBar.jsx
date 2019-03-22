@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Container, Dropdown, Menu } from 'semantic-ui-react';
+import { Container, Dropdown, Menu, Image } from 'semantic-ui-react';
+
+import images from '../assets/images';
 
 const propTypes = {
   user: PropTypes.shape({}),
@@ -37,7 +39,9 @@ function NavBar(props) {
   return (
     <Menu fixed="top" size="large" secondary pointing style={{ backgroundColor: 'white' }}>
       <Container>
-        <Menu.Item name="glossm" as={Link} to="/" header />
+        <Menu.Item name="glossm" as={Link} to="/" header>
+          <Image src={images.logoTransparent} size="small"/>
+        </Menu.Item>
         <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
         {user ? <AuthenticatedMenu /> : <NotAuthenticatedMenu />}
       </Container>
