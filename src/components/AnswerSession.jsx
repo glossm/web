@@ -4,6 +4,7 @@ import { Button, Form, Header, Table } from 'semantic-ui-react';
 import Sound from 'react-sound';
 import IPAInput from './IPAInput';
 import WaveformCanvas from './WaveformCanvas';
+import PhoneticTable from './PhoneticTable';
 import SpectrogramCanvas from './SpectrogramCanvas';
 
 const propTypes = {
@@ -34,7 +35,16 @@ class AnswerSession extends Component {
     loadFailed: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.ipaInput = React.createRef();
     this.spectrogram = React.createRef();
+  }
+
+  onPhonemeTableClick = (ch) => {
+    this.ipaInput.current.insert(ch);
+  };
+
   onChange = (e, { name, value }) => this.setState({ [name]: value });
   onSubmit = () => {
     const { onSubmit } = this.props;
@@ -71,21 +81,20 @@ class AnswerSession extends Component {
         />
         <br/>
         <SpectrogramCanvas audio={audio} onLoad={this.onLoad} ref={this.spectrogram}></SpectrogramCanvas>
-          <Table.Header>
-            <Table.Row>
-              {LANGUAGES.map(({ code, name }) => <Table.HeaderCell key={code} content={name} />)}
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <Table.Row>
-              {LANGUAGES.map(({ code }) => <Table.Cell key={code} content={meaning[code]} />)}
-            </Table.Row>
-          </Table.Body>
-        </Table>
+        <div style={{display: "flex"}}>
+        {LANGUAGES.map(({code, name}) => 
+          <div className="meaning-card" key={code}>
+            <div className="meaning-card-header">{name}</div>
+            <div className="meaning-card-body">{meaning[code]}</div>
+          </div>
+        )}
+        </div>
+        
         <Form onSubmit={this.onSubmit}>
-          <IPAInput name="answer" value={answer} onChange={this.onChange}/><br/>
+          <IPAInput ref={this.ipaInput} name="answer" value={answer} onChange={this.onChange}/><br/>
           <Form.Button content="Submit" color="green" />
         </Form>
+        <PhoneticTable onClick={this.onPhonemeTableClick}></PhoneticTable>
       </Fragment>
     );
   }

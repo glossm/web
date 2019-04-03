@@ -20,3 +20,133 @@ body {
 .ui.page.modals.transition.visible {
   display: flex !important;
 }
+
+.phoneme-table th {
+  padding: 4px 8px;
+  border-right: 1px solid #C1C3D1;;
+  font-size: 16px;
+  color:#444444;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+
+.phoneme-table thead {
+  border-bottom: 2px solid #9ea7af;
+  background-color: #e8e8e8;
+}
+
+.phoneme-table th:first-child {
+  border-top-left-radius: 3px;
+}
+ 
+.phoneme-table th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+
+.phoneme-table {
+  background: #f8f8f8;
+  border-radius:3px;
+  border-collapse: collapse;
+  margin: auto;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.phoneme-table tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  color:#444444;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+.phoneme-table tr:first-child {
+  border-top:none;
+}
+
+.phoneme-table tr:last-child {
+  border-bottom:none;
+}
+ 
+.phoneme-table tr:nth-child(even) th{
+  background:#f0f0f0;
+}
+
+.phoneme-table tr:nth-child(even) td{
+  background:#f0f0f0;
+}
+
+ 
+.phoneme-table tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+.phoneme-table tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+.phoneme-table td {
+  padding: 4px 8px;
+  text-align:center;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+.phoneme-table td:last-child {
+  border-right: 0px;
+}
+
+.phoneme-table button {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  color: #222222;
+  margin: 2px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+.phoneme-table button:hover {
+  border: 2px solid #666666;
+  margin: 0px;
+}
+
+.phoneme-table button:active {
+  background-color: #dddddd;
+}
+
+.meaning-card {
+  width: 150px;        
+  border: 1px solid #EFEFEF;    
+  border-radius: 4px;        
+  overflow: hidden;       
+  display: flex;    
+  flex-direction: column;
+  margin: 4px;
+}
+
+.meaning-card-header {
+  color: #888888;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #EF9A9A;
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+}
+
+.meaning-card-body {
+  display: flex;          
+  flex-direction: column;    
+  justify-content: center;    
+  align-items: center;      
+  padding: 8px 0;    
+  color: #444444;
+  font-size: 16px;
+  text-align: center; 
+}

@@ -57,11 +57,15 @@ class IPAInput extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.insert = this.insert.bind(this);
     this.ipaInput = React.createRef();
   }
 
+  insert(ch) {
+    this.setState({value: this.state.value + ch});
+  }
+
   handleChange(e) {
-    console.log('change');
     this.setState({value: e.target.value});
   }
 
@@ -73,9 +77,6 @@ class IPAInput extends Component {
         const oldCharacter = this.keymap[e.key][this.currentCharacterIndex];
         this.currentCharacterIndex = (this.currentCharacterIndex + 1) % this.keymap[e.key].length;
         const newCharacter = this.keymap[e.key][this.currentCharacterIndex];
-        console.log(this.state.value);
-        console.log(this.state.value.substring(0, e.target.selectionStart-this.currentCharacterLength))
-        console.log(this.state.value.substring(e.target.selectionStart));
         newValue = 
           this.state.value.substring(0, e.target.selectionStart-this.currentCharacterLength)
           + newCharacter
@@ -95,7 +96,6 @@ class IPAInput extends Component {
       }
 
       this.setState({value: newValue}, (e) => {
-        console.log(this.ipaInput.current.selectionStart);
         this.ipaInput.current.selectionStart = cursorPosition;
         this.ipaInput.current.selectionEnd = cursorPosition;
       });
