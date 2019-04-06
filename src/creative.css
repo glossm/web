@@ -1,0 +1,196 @@
+
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+hr.divider {
+  max-width: 3.25rem;
+  border-width: 0.2rem;
+  border-color: #f4623a;
+}
+
+hr.light {
+  border-color: #ffffff;
+}
+
+.welcome-bg-primary {
+  background-color: #f4623a !important;
+}
+
+.welcome-btn {
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji';
+}
+
+.welcome-btn-xl {
+  padding: 1.25rem 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10rem;
+}
+
+
+.welcome-btn-primary {
+  color: #fff;
+  background-color: #f4623a;
+  border-color: #f4623a;
+}
+
+.welcome-btn-primary:hover {
+  color: #fff;
+  background-color: #f24516;
+  border-color: #ee3e0d;
+}
+
+.welcome-btn-primary:focus, .welcome-btn-primary.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(246, 122, 88, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(246, 122, 88, 0.5);
+}
+
+.welcome-btn-primary.disabled, .welcome-btn-primary:disabled {
+  color: #fff;
+  background-color: #f4623a;
+  border-color: #f4623a;
+}
+
+.welcome-btn-primary:not(:disabled):not(.disabled):active, .welcome-btn-primary:not(:disabled):not(.disabled).active,
+.show > .welcome-btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #ee3e0d;
+  border-color: #e23a0d;
+}
+
+.welcome-btn-primary:not(:disabled):not(.disabled):active:focus, .welcome-btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .welcome-btn-primary.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(246, 122, 88, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(246, 122, 88, 0.5);
+}
+
+.welcome-btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.welcome-btn-secondary:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.welcome-btn-secondary:focus, .welcome-btn-secondary.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.welcome-btn-secondary.disabled, .welcome-btn-secondary:disabled {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.welcome-btn-secondary:not(:disabled):not(.disabled):active, .welcome-btn-secondary:not(:disabled):not(.disabled).active,
+.show > .welcome-btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #545b62;
+  border-color: #4e555b;
+}
+
+.welcome-btn-secondary:not(:disabled):not(.disabled):active:focus, .welcome-btn-secondary:not(:disabled):not(.disabled).active:focus,
+.show > .welcome-btn-secondary.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+
+.welcome-btn-light {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.welcome-btn-light:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.welcome-btn-light:focus, .welcome-btn-light.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
+}
+
+.welcome-btn-light.disabled, .welcome-btn-light:disabled {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.welcome-btn-light:not(:disabled):not(.disabled):active, .welcome-btn-light:not(:disabled):not(.disabled).active,
+.show > .welcome-btn-light.dropdown-toggle {
+  color: #212529;
+  background-color: #dae0e5;
+  border-color: #d3d9df;
+}
+
+.welcome-btn-light:not(:disabled):not(.disabled):active:focus, .welcome-btn-light:not(:disabled):not(.disabled).active:focus,
+.show > .welcome-btn-light.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
+}
+
+.page-section {
+  padding: 8rem 0;
+}
+
+.welcome-masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 72px);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("/bg-masthead.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+.welcome-masthead h1 {
+  font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+  .welcome-masthead {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 72px;
+    padding-bottom: 0;
+  }
+  .welcome-masthead p {
+    font-size: 1.15rem;
+  }
+  .welcome-masthead h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .welcome-masthead h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.welcome-text-primary {
+  color: #f4623a !important;
+}
+
+a.welcome-text-primary:hover, a.welcome-text-primary:focus {
+  color: #d6370c !important;
+}
+
+.welcome-text-secondary {
+  color: #6c757d !important;
+}
+
+a.welcome-text-secondary:hover, a.welcome-text-secondary:focus {
+  color: #494f54 !important;
+}
