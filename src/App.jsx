@@ -8,6 +8,8 @@ import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 import { logout } from './actions/auth';
 import NavBar from './components/NavBar';
 import LanguageList from './pages/LanguageList';
+import LanguageMap from './pages/LanguageMap';
+import LanguageDashboard from './pages/LanguageDashboard';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Session from './pages/Session';

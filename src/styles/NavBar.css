@@ -1,0 +1,8 @@
+.ui.secondary.menu .NavBar-item {
+  color: #736357;
+  font-size: 18px;
+}
+
+.ui.secondary.menu a.item.NavBar-item:hover {
+  color: #d55e2d;
+}

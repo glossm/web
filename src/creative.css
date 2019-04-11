@@ -146,8 +146,7 @@ hr.light {
 }
 
 .welcome-masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 72px);
+  padding-bottom: calc(10rem);
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("/bg-masthead.jpg");
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("/bg-masthead.jpg");
   background-position: center;
@@ -160,9 +159,8 @@ hr.light {
 }
 @media (min-width: 992px) {
   .welcome-masthead {
-    height: 100vh;
+    height: 70vh;
     min-height: 40rem;
-    padding-top: 72px;
     padding-bottom: 0;
   }
   .welcome-masthead p {

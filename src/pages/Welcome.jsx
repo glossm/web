@@ -4,17 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Welcome() {
   return (
-    <Container>
+    <div>
       <header className="welcome-masthead">
         <div className="container h-100">
           <div className="row h-100 align-items-center justify-content-center text-center">
             <div className="col-lg-10 align-self-end">
-              <h1 className="text-uppercase text-white font-weight-bold">Your Favorite Source of Free Bootstrap Themes</h1>
+              <h1 className="text-uppercase text-white font-weight-bold">Language, <i>never taught</i></h1>
               <hr className="divider my-4"></hr>
             </div>
             <div className="col-lg-8 align-self-baseline">
-              <p className="text-white-75 font-weight-light mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
-              <a className="welcome-btn welcome-btn-primary welcome-btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+              <p className="text-white-75 font-weight-light mb-5">Learn a language that is hidden in the woods<br/> and help us discover more about those languages at the same time!</p>
+              <a className="welcome-btn welcome-btn-primary welcome-btn-xl js-scroll-trigger" href="/login">Join now!</a>
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ function Welcome() {
           </div>
         </div>
       </section>
-    </Container>
+    </div>
 
   );
 }

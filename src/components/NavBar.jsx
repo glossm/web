@@ -23,26 +23,27 @@ function NavBar(props) {
     <Menu.Menu position="right">
       <Dropdown item text={user.username}>
         <Dropdown.Menu>
-          <Dropdown.Item text="My Profile" as={Link} to="/profile/" />
-          <Dropdown.Item text="Logout" onClick={onLogout} />
+          <Dropdown.Item text="My Profile" className="NavBar-item"  as={Link} to="/profile/" />
+          <Dropdown.Item text="Logout" className="NavBar-item"  onClick={onLogout} />
         </Dropdown.Menu>
       </Dropdown>
     </Menu.Menu>
   );
   const NotAuthenticatedMenu = () => (
     <Menu.Menu position="right">
-      <Menu.Item name="sign up" as={Link} to="/signup/" />
-      <Menu.Item name="login" as={Link} to="/login/" />
+      <Menu.Item name="sign up" className="NavBar-item"  as={Link} to="/signup/" />
+      <Menu.Item name="login" className="NavBar-item"  as={Link} to="/login/" />
     </Menu.Menu>
   );
 
   return (
-    <Menu fixed="top" size="large" secondary pointing style={{ backgroundColor: 'white' }}>
+    <Menu fixed="top" size="large" secondary style={{backgroundColor:"white"}}>
       <Container>
         <Menu.Item name="glossm" as={Link} to="/" header>
           <Image src={images.logoTransparent} size="small"/>
         </Menu.Item>
-        <Menu.Item name="learn" as={Link} to="/learn/" active={isActive('learn/')} />
+        <Menu.Item name="learn" className="NavBar-item" as={Link} to="/learn/" active={isActive('learn/')} />
+        <Menu.Item name="language" className="NavBar-item" as={Link} to="/language/" active={isActive('language/')} />
         {user ? <AuthenticatedMenu /> : <NotAuthenticatedMenu />}
       </Container>
     </Menu>
