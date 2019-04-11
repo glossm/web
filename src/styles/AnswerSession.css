@@ -1,0 +1,15 @@
+
+.AnswerSession-flagButtonGroup {
+  height: 100%;
+}
+.ui.button.AnswerSession-flagButton {
+  padding: 6px;
+}
+
+.ui.form .fields.AnswerSession-formGroup {
+  margin: 0;
+}
+
+.ui.form input.IPAInput {
+  width: 100%;
+}

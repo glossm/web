@@ -111,7 +111,7 @@ class IPAInput extends Component {
 
   render() {
     return (
-      <input ref={this.ipaInput} type="text" value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder="Your Answer"/>
+      <input ref={this.ipaInput} className={this.props.className} type="text" value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder="Your Answer"/>
     );
   }
 }

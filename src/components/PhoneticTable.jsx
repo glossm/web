@@ -72,7 +72,7 @@ class PhoneticTable extends Component {
 
   render() {
     return (
-      <table className="phoneme-table">
+      <table hidden={this.props.hidden} className="phoneme-table">
         {this.createTable()}
       </table>
     );

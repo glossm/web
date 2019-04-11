@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header, Table } from 'semantic-ui-react';
+import { Button, Form, Header, Icon, Image, Label } from 'semantic-ui-react';
 import Sound from 'react-sound';
 import IPAInput from './IPAInput';
 import WaveformCanvas from './WaveformCanvas';
@@ -33,6 +33,8 @@ class AnswerSession extends Component {
     playing: false,
     playingDisabled: true,
     loadFailed: false,
+    activeMeanLang: 'en',
+    showIPATable: false
   };
 
   constructor(props) {
@@ -51,6 +53,7 @@ class AnswerSession extends Component {
     const { answer } = this.state;
     onSubmit(this.ipaInput.current.state.value);
   };
+  
   onLoad = (loaded) => {
     if (loaded) {
       this.setState({ playingDisabled: false });
