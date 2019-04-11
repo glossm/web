@@ -1,0 +1,25 @@
+
+.AudioPlayer-waveform {
+  border-radius: 4px;
+  background-color: #eeeeee;
+  height: 40px;
+}
+
+.ui.grid>.column.AudioPlayer-waveformDiv {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.AudioPlayer-playButton {
+  width: 100%;
+  height: 40px;
+}
+
+.AudioPlayer-spectrumButton {
+  width: 100%;
+  height: 40px;
+}
+
+.ui.icon.button.AudioPlayer-spectrumButton {
+  padding: 0;
+}

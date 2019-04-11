@@ -73,28 +73,58 @@ class AnswerSession extends Component {
     return (
       <Fragment>
         <Header content="What does this sound like?" />
-        <Button
-          content={playButtonText}
-          icon="play"
-          onClick={this.onPlay}
-          disabled={playingDisabled}
-        />
-        <br/>
         <SpectrogramCanvas audio={audio} onLoad={this.onLoad} ref={this.spectrogram}></SpectrogramCanvas>
-        <div style={{display: "flex"}}>
-        {LANGUAGES.map(({code, name}) => 
-          <div className="meaning-card" key={code}>
-            <div className="meaning-card-header">{name}</div>
-            <div className="meaning-card-body">{meaning[code]}</div>
+
+        <div className="ui equal width grid">
+          <div className="column">
+            <Button.Group className="AnswerSession-flagButtonGroup">
+              {LANGUAGES.map(({code, name}, i) =>
+              (i < LANGUAGES.length - 1) ?
+                <Button
+                  className="AnswerSession-flagButton"
+                  active={this.state.activeMeanLang === code} 
+                  key={code} 
+                  onClick={() => {this.setState({activeMeanLang: code})}}>
+                  <Image src={`/flags/${code}16.png`}/>
+                </Button>
+              :
+                <Button as="div" labelPosition="right">
+                  <Button 
+                    className="AnswerSession-flagButton"
+                    size="mini" 
+                    active={this.state.activeMeanLang === code} 
+                    onClick={() => {this.setState({activeMeanLang: code})}}>
+                    <Image src={`/flags/${code}16.png`}/>
+                  </Button>
+                  <Label basic pointing='left'>{meaning[this.state.activeMeanLang]}</Label>
+                </Button>
+              )}
+            </Button.Group >
           </div>
-        )}
+          
         </div>
-        
-        <Form onSubmit={this.onSubmit}>
-          <IPAInput ref={this.ipaInput} name="answer" value={answer} onChange={this.onChange}/><br/>
-          <Form.Button content="Submit" color="green" />
-        </Form>
-        <PhoneticTable onClick={this.onPhonemeTableClick}></PhoneticTable>
+
+        <div className="ui equal width grid">
+          <div className="four wide column">
+            <Button basic icon labelPosition="right">
+              <Icon 
+                name={this.state.showIPATable?"chevron up":"chevron down"} 
+                onClick={() => this.setState({showIPATable: !this.state.showIPATable})}/>
+              IPA Table
+            </Button>
+          </div>
+
+          <div className="twelve wide column">
+            <Form onSubmit={this.onSubmit} >
+              <Form.Group className="AnswerSession-formGroup">
+                <IPAInput className="IPAInput" ref={this.ipaInput} name="answer" value={answer} onChange={this.onChange}/>
+                <Form.Button content="Submit" color="green" />
+              </Form.Group>
+            </Form>
+          </div>
+          <PhoneticTable hidden={!this.state.showIPATable} onClick={this.onPhonemeTableClick}></PhoneticTable>
+
+        </div>
       </Fragment>
     );
   }
