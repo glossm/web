@@ -60,6 +60,8 @@ function App(props) {
           <Route exact path="/learn/" component={isAuthenticated(LanguageList)} />
           <Route exact path="/learn/:langId/" component={isAuthenticated(TopicList)} />
           <Route exact path="/learn/:langId/:topicId/" component={isAuthenticated(Session)} />
+          <Route exact path="/language/" component={LanguageMap} />
+          <Route exact path="/language/:langId/" component={LanguageDashboard} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>

@@ -19,17 +19,15 @@ import reducers from './reducers';
 import './index.css';
 import './creative.css';
 
-import 'jquery/dist/jquery';
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'jquery-easing/dist/jquery.easing.1.3.umd';
 import 'react-fontawesome';
-import 'bootstrap/dist/css/bootstrap.css';
+
+import './styles/styles';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGem, faLaptopCode, faGlobe, faHeart} from '@fortawesome/free-solid-svg-icons'
+import { faGem, faLaptopCode, faHeart, faUsers, faExclamationCircle, faGlobe} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faGem, faLaptopCode, faGlobe, faHeart);
+library.add(faGem, faLaptopCode, faGlobe, faHeart, faUsers, faExclamationCircle);
 
 const history = createBrowserHistory();
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
