@@ -10,12 +10,14 @@ import NavBar from './components/NavBar';
 import LanguageList from './pages/LanguageList';
 import LanguageMap from './pages/LanguageMap';
 import LanguageDashboard from './pages/LanguageDashboard';
+import LanguageOverview from './pages/LanguageOverview';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Session from './pages/Session';
 import SignUp from './pages/SignUp';
 import TopicList from './pages/TopicList';
 import Welcome from './pages/Welcome';
+import LanguagePhoneme from './pages/LanguagePhoneme';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -64,6 +66,8 @@ function App(props) {
           <Route exact path="/learn/:langId/:topicId/" component={isAuthenticated(Session)} />
           <Route exact path="/language/" component={LanguageMap} />
           <Route exact path="/language/:langId/" component={LanguageDashboard} />
+          <Route exact path="/language/overview/:langId/" component={LanguageOverview} />
+          <Route exact path="/language/phoneme/:langId/" component={LanguagePhoneme} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>
