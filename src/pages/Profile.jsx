@@ -35,7 +35,7 @@ class Profile extends Component {
   render() {
     const { user } = this.props;
     const { proficiency, contextRef } = this.state;
-    const offset = 100;
+    const offset = 20;
 
     return (
       <Container>
@@ -47,19 +47,18 @@ class Profile extends Component {
               image={user.profileThumbnail}
               username={user.username}
               name={user.name}
+              nationality={user.nationality}
               tags={[
                 user.isExpert && { text: 'Expert', color: 'green' },
               ]}
             />
           </Grid.Column>
           <Grid.Column width={12}>
-            <div ref={this.handleContextRef}>
-              {proficiency.map(({ id, name, level, percent }) => (
+            <div className="pt-2" ref={this.handleContextRef}>
+              {proficiency.map(( lang ) => (
                 <ProficiencyCard
-                  key={id.toString()}
-                  name={name}
-                  level={level}
-                  percent={percent}
+                  key={lang.id.toString()}
+                  lang={lang}
                 />
               ))}
             </div>
