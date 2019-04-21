@@ -25,6 +25,8 @@ const en_translation = {
   'language.learnbutton': 'Start Learning',
   'language.phonemelist': 'Phonemes',
   'language.introbutton': 'Language Introduction',
+  'language.startlearning': 'Start Learning',
+  'language.learning': 'Currently Learning',
 
   'Bashkir.overview': 'The Bashkir language (/ˈbɑːʃkɪər, ˈbæʃ-/, башҡорт теле [bɑʃˈqort tɘˈlɘ]) is a Turkic language belonging to the Kipchak branch. It is co-official with Russian in the Republic of Bashkortostan, European Russia and has approximately 1.2 million speakers in Russia. Bashkir has three dialects: Southern, Eastern and Northwestern.',
 

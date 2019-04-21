@@ -51,7 +51,7 @@ class LanguageOverview extends Component {
             <Grid>
               <Grid.Row stretched>
                 <Grid.Column width={10}>
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Holiday_Bashkir_national_costume_52.jpg"/>
+                  <Image src={this.state.lang.image || "https://upload.wikimedia.org/wikipedia/commons/e/e8/Holiday_Bashkir_national_costume_52.jpg"}/>
                 </Grid.Column>
                 <Grid.Column width={6} className="h5 p-3">
                   <Translation>

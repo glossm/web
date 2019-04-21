@@ -15,6 +15,11 @@ class LanguageDashboard extends Component {
     this.fetchLanguages();
   }
 
+  onStartLearning = async (langId) => {
+    await axios.post('transcription/start-learning/', { language: langId });
+    this.fetchLanguages();
+  }
+
   async fetchLanguages() {
     const response = await axios.get(`core/languages/${this.props.match.params.langId}`);
     const lang = response.data;
@@ -25,7 +30,24 @@ class LanguageDashboard extends Component {
 
   render() {
     const lang = this.state.lang;
-     
+
+    const learningButton = lang.learning ? 
+      
+    (<Translation>
+      { t => 
+        <Button disabled size="large"> 
+          { t('language.learning') }
+        </Button>
+      }
+    </Translation>) :
+    (<Translation>
+      { t => 
+        <Button size="large" onClick={() => {this.onStartLearning(lang.id)}}> 
+          { t('language.startlearning') }
+        </Button>
+      }
+    </Translation>);
+      
     return (
       this.state.redirect ? 
       <Redirect to={this.state.redirect}/> :
@@ -75,6 +97,7 @@ class LanguageDashboard extends Component {
                               </Button>
                             }
                           </Translation>
+                          {learningButton}
                         </div>
                       </Grid.Column>
                     </Grid.Row>
