@@ -31,32 +31,25 @@ class SpectrogramCanvas extends Component {
     }
   }
 
-// orange #ff983f
-// dark gray #4d4d4d
-// dark brown #736357
-// light brown #d55e2d
   componentDidMount() {
     this.wavesurfer = WaveSurfer.create({
-      height: 40,
+      height: 60,
       maxCanvasWidth: 200,
       minPxPerSec: 1,
       container: "#waveform",
-      barGap: 2,
-      barWidth: 2,
       waveColor: "#4d4d4d",
       cursorWidth: 2,
       progressColor: "#d55e2d",
       normalize: true,
       plugins: [
         SpectrogramPlugin.create({
-          height: 80,
           maxCanvasWidth: 200,
-          fftSamples: 256,
+          fftSamples: 512,
           container: "#spectrum",
         })
     ]
     });
-    this.wavesurfer.load('/example.mp3');
+    this.wavesurfer.load(this.props.audio || '/example.mp3');
     this.wavesurfer.on('ready', () =>{
       this.setState({loaded: true});
     });
