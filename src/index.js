@@ -11,6 +11,8 @@ import ReduxThunk from 'redux-thunk';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
 
+import './i18n/i18n';
+
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -18,8 +20,6 @@ import { verifyToken } from './actions/auth';
 import reducers from './reducers';
 import './index.css';
 import './creative.css';
-
-import 'react-fontawesome';
 
 import './styles/styles';
 
