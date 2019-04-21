@@ -9,7 +9,7 @@ function Welcome() {
     <div>
       <header className="welcome-masthead">
         <div className="container h-100">
-          <div className="row h-100 align-items-center justify-content-center text-center">
+          <div className="bs-row h-100 align-items-center justify-content-center text-center">
             <div className="col-lg-10 align-self-end">
               <h1 className="text-uppercase text-white font-weight-bold" dangerouslySetInnerHTML={{__html:t('welcome.title1')}}></h1>
               <hr className="divider my-4"></hr>
@@ -24,7 +24,7 @@ function Welcome() {
 
       <section className="page-section welcome-bg-primary" id="about">
         <div className="container">
-          <div className="row justify-content-center">
+          <div className="bs-row justify-content-center">
             <div className="col-lg-8 text-center">
               <h2 className="text-white mt-0">{t('welcome.title2')}</h2>
               <hr className="divider light my-4"></hr>
@@ -39,7 +39,7 @@ function Welcome() {
         <div className="container">
           <h2 className="text-center mt-0">At Your Service</h2>
           <hr className="divider my-4"></hr>
-          <div className="row">
+          <div className="bs-row">
             <div className="col-lg-3 col-md-6 text-center">
               <div className="mt-5">
                 <FontAwesomeIcon icon="gem" size="4x" className="welcome-text-primary mb-4"/>
@@ -81,14 +81,14 @@ function Welcome() {
 
       <section className="page-section" id="contact">
         <div className="container">
-          <div className="row justify-content-center">
+          <div className="bs-row justify-content-center">
             <div className="col-lg-8 text-center">
               <h2 className="mt-0">Let's Get In Touch!</h2>
               <hr className="divider my-4"/>
               <p className="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
             </div>
           </div>
-          <div className="row">
+          <div className="bs-row">
             <div className="col-lg-4 ml-auto text-center">
               <i className="fas fa-phone fa-3x mb-3 text-muted"></i>
               <div>+1 (202) 555-0149</div>
