@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Icon, Image, Label } from 'semantic-ui-react';
 import Sound from 'react-sound';
 import IPAInput from './IPAInput';
-import WaveformCanvas from './WaveformCanvas';
 import PhoneticTable from './PhoneticTable';
 import SpectrogramCanvas from './SpectrogramCanvas';
 
