@@ -47,6 +47,7 @@ class LanguageMap extends Component {
         longitude={city.longitude}
         latitude={city.latitude} >
         <CityPin size={20} 
+          color={city.learning?"#d55e2d":"#808080"}
           onMouseOver={() => this.setState({popupInfo: city})} 
           onMouseOut={() => this.setState({popupInfo: null})}
           onClick={() => this.setState({redirect:city.code})} />

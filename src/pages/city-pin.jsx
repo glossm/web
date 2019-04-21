@@ -6,20 +6,19 @@ const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,
 
 const pinStyle = {
   cursor: 'pointer',
-  fill: '#d55e2d',
   stroke: 'none'
 };
 
 export default class CityPin extends PureComponent {
 
   render() {
-    const {size = 20, onClick, onMouseOver, onMouseOut} = this.props;
+    const {size = 20, onClick, onMouseOver, onMouseOut, color} = this.props;
 
     return (
       <svg 
         height={size}
         viewBox="0 0 24 24"
-        style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+        style={{...pinStyle, fill: color, transform: `translate(${-size / 2}px,${-size}px)`}}
         onClick={onClick}
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
