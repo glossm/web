@@ -4,7 +4,6 @@ import { Button, Card, Container, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import humanFormat from 'human-format';
 import MapGL, { Marker, Popup} from 'react-map-gl';
-import geodata from './geodata';
 import CityPin from './city-pin';
 import LanguageMapInfoBox from './LanguageMapInfoBox';
 
@@ -33,8 +32,20 @@ class LanguageMap extends Component {
       pitch: 0
     },
     popupIngo: null,
-    redirect: false
+    redirect: false,
+    languages: [],
   };
+
+  componentWillMount() {
+    this.fetchLanguages();
+  }
+
+  async fetchLanguages() {
+    const response = await axios.get('core/languages/');
+    const languages = response.data;
+    this.setState({ languages });
+  }
+
 
   _updateViewport = (viewport) => {
     this.setState({viewport});
@@ -50,7 +61,7 @@ class LanguageMap extends Component {
           color={city.learning?"#d55e2d":"#808080"}
           onMouseOver={() => this.setState({popupInfo: city})} 
           onMouseOut={() => this.setState({popupInfo: null})}
-          onClick={() => this.setState({redirect:city.code})} />
+          onClick={() => this.setState({redirect:city.id})} />
       </Marker>
     );
   }
@@ -85,7 +96,7 @@ class LanguageMap extends Component {
             this.setState({viewport});
           }}
         >
-          { geodata.map(this._renderMarker)}
+          { this.state.languages.map(this._renderMarker)}
           {this._renderPopup()}
         </MapGL>
       </Container>
