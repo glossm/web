@@ -18,6 +18,8 @@ const propTypes = {
 class Profile extends Component {
   state = {
     proficiency: [],
+    submissions: {},
+    topics: {}
   };
 
   async componentWillMount() {
@@ -28,7 +30,36 @@ class Profile extends Component {
     });
     const proficiency = await Promise.all(promises);
     this.setState({ proficiency });
+
+    const submissionsPromises = user.proficiency.map(
+      async ({language: langId}) => {
+        const submissionData = await axios.get(`transcription/submissions/${langId}`);
+        submissionData.langId = langId
+        return {
+          langId: langId,
+          data: submissionData.data
+        };
+      }
+    );
+    const submissionList = await Promise.all(submissionsPromises);
+    let submissions = {};
+    submissionList.map((s) => {submissions[s.langId] = s.data});
+    this.setState({submissions});
+    
+    const topicPromises = this.props.user.proficiency.map(
+      async ({language: langId}) => {
+        const { data } = await axios.get(`core/languages/${langId}/topics/`);
+        return {langId, data};
+      }
+    );
+    const topicList = await Promise.all(topicPromises);
+    let topics = {};
+    topicList.map(topic => {
+      topics[topic.langId] = topic.data;
+    });
+    this.setState({ topics });
   }
+
 
   handleContextRef = contextRef => this.setState({ contextRef });
 
@@ -36,6 +67,16 @@ class Profile extends Component {
     const { user } = this.props;
     const { proficiency, contextRef } = this.state;
     const offset = 20;
+    const finishedTopics = Object.keys(this.state.topics)
+      .reduce((r, k) => {
+        return r + this.state.topics[k].reduce((r2, topic) => {
+          if (topic.progress.total > 0 && topic.progress.current == topic.progress.total) {
+            return r2 + 1;
+          } else {
+            return r2;
+          }
+        }, 0);
+      }, 0);
 
     return (
       <Container>
@@ -48,6 +89,11 @@ class Profile extends Component {
               username={user.username}
               name={user.name}
               nationality={user.nationality}
+              email={user.email}
+              joined={user.dateJoined}
+              proficiency={proficiency}
+              finishedTopics={finishedTopics}
+              submissions={Object.keys(this.state.submissions).map((k) => {return this.state.submissions[k]})}
               tags={[
                 user.isExpert && { text: 'Expert', color: 'green' },
               ]}
@@ -59,6 +105,8 @@ class Profile extends Component {
                 <ProficiencyCard
                   key={lang.id.toString()}
                   lang={lang}
+                  submissions={this.state.submissions[lang.id]}
+                  topics={this.state.topics[lang.id]}
                 />
               ))}
             </div>
