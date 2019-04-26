@@ -44,7 +44,6 @@ function NavBar(props) {
         <Menu.Item name="glossm" as={Link} to="/" header>
           <Image src={images.logoTransparent} size="small"/>
         </Menu.Item>
-        <Menu.Item name={t('navbar.learn')} className="NavBar-item" as={Link} to="/learn/" active={isActive('learn/')} />
         <Menu.Item name={t('navbar.language')} className="NavBar-item" as={Link} to="/language/" active={isActive('language/')} />
         {user ? <AuthenticatedMenu /> : <NotAuthenticatedMenu />}
       </Container>
