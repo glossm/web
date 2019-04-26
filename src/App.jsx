@@ -13,6 +13,7 @@ import LanguageDashboard from './pages/LanguageDashboard';
 import LanguageOverview from './pages/LanguageOverview';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import ProfileEdit from './pages/ProfileEdit';
 import Session from './pages/Session';
 import SignUp from './pages/SignUp';
 import TopicList from './pages/TopicList';
@@ -61,6 +62,7 @@ function App(props) {
           <Route exact path="/login/" component={isNotAuthenticated(Login)} />
           <Route exact path="/signup/" component={isNotAuthenticated(SignUp)} />
           <Route exact path="/profile/" component={isAuthenticated(Profile)} />
+          <Route exact path="/profile/edit/" component={isAuthenticated(ProfileEdit)} />
           <Route exact path="/learn/" component={isAuthenticated(LanguageList)} />
           <Route exact path="/learn/:langId/" component={isAuthenticated(TopicList)} />
           <Route exact path="/learn/:langId/:topicId/" component={isAuthenticated(Session)} />
