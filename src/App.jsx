@@ -19,6 +19,7 @@ import SignUp from './pages/SignUp';
 import TopicList from './pages/TopicList';
 import Welcome from './pages/Welcome';
 import LanguagePhoneme from './pages/LanguagePhoneme';
+import ConfirmEmail from './pages/ConfirmEmail';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -70,6 +71,7 @@ function App(props) {
           <Route exact path="/language/:langId/" component={LanguageDashboard} />
           <Route exact path="/language/overview/:langId/" component={LanguageOverview} />
           <Route exact path="/language/phoneme/:langId/" component={LanguagePhoneme} />
+          <Route exact path="/confirm-email/:token" component={ConfirmEmail} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Container, Dropdown, Menu, Image } from 'semantic-ui-react';
+import { Container, Dropdown, Menu, Image, Message } from 'semantic-ui-react';
 import { useTranslation} from 'react-i18next';
 
 import images from '../assets/images';
@@ -38,8 +38,15 @@ function NavBar(props) {
     </Menu.Menu>
   );
 
+  const VerifyFlash = () => (
+    <Message attached='bottom' warning style={{width:"100%"}}>
+      Your email is not verified. <Link to="/profile/">Check your email in your Profile page. </Link>
+      Or <Link to="/resendEmail/">resend verification mail.</Link>
+    </Message>
+  );
+
   return (
-    <Menu fixed="top" size="large" secondary style={{backgroundColor:"white"}}>
+    <Menu fixed="top" size="large" secondary style={{backgroundColor:"white", flexWrap:"wrap"}}>
       <Container>
         <Menu.Item name="glossm" as={Link} to="/" header>
           <Image src={images.logoTransparent} size="small"/>
@@ -47,6 +54,7 @@ function NavBar(props) {
         <Menu.Item name={t('navbar.language')} className="NavBar-item" as={Link} to="/language/" active={isActive('language/')} />
         {user ? <AuthenticatedMenu /> : <NotAuthenticatedMenu />}
       </Container>
+      { user && (user.emailVerified || <VerifyFlash/>) }
     </Menu>
   );
 }
